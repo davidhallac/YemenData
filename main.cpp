@@ -8,14 +8,39 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include "/Users/Hallac/Desktop/Snap-2.1/snap-core/Snap.h"
+
+using namespace std;
 
 int main(int argc, const char * argv[])
 {
 
-    // insert code here...
-    std::cout << "Hello, World!\n";
+	//Confirm that file exists
+    ifstream in;
+    in.open("TestData.csv");
+	if (!in.is_open())
+	{
+		cout << "Could not open file\n";
+		return 0;
+	}
+
+	string value;
+	while (getline(in,value))
+	{
+		cout << value << "\n";
+
+		//Do SNAP stuff here
+		
+
+	}
+	in.close();
+
+    cout << "Hello, World!\n";
     return 0;
         
+
 }
 
