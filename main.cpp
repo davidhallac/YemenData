@@ -11,7 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include "/Users/Hallac/Desktop/Snap-2.1/snap-core/Snap.h"
+#include "/Users/Hallac/Desktop/Updated-SNAP/snap-core/Snap.h"
 
 using namespace std;
 
