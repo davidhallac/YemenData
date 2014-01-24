@@ -50,7 +50,7 @@ public:
 
 };
 
-typedef TVec<TPhoneCall> TPhoneCall;
+typedef TVec<TPhoneCall> TPhoneCallV;
 //Add using TVec defined stuff
 
 
