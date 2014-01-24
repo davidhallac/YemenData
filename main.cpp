@@ -58,7 +58,8 @@ int main(int argc, const char * argv[])
 
 		call.setVals(src, dest, locsrc, locdest, duration, starttime);
 		
-		PhoneV.Add(call);
+		if(!badcall)
+			PhoneV.Add(call);
 
 	}
 	TFOut fout("a.bin");
