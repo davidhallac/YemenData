@@ -28,8 +28,10 @@ int main(int argc, const char * argv[])
     TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
     TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
+	TVec<TPhoneCall> PhoneV(10000000, 0);
 	while(Ss.Next())
 	{
+		//To see how fast the code is running
 		counter = counter + 1;
 		if (counter % 1000000 == 1)
 			cout << counter << ", " << Ss.GetFld(0) << "\n";		
@@ -45,9 +47,8 @@ int main(int argc, const char * argv[])
 		{
 			dest = Ss.GetInt(5);
 		}
-		else{
+		else{ //About 1 error like this per 25,000 calls. Just ignore these
 			badcall = 1;
-			cout << badcall << "\n";
 			dest = 0;
 		}
 		TStr locsrc = Ss.GetFld(3); //Has numbers/letters
@@ -56,7 +57,12 @@ int main(int argc, const char * argv[])
 		TInt starttime = Ss.GetInt(9);
 
 		call.setVals(src, dest, locsrc, locdest, duration, starttime);
+		
+		//vec.add(call)
+
 	}
+	TFOut fout("a.bin");
+	PhoneV.Save(fout);
 
 	//load/save code. Seems to be working
 	/*TFOut fout("a.bin"); 
