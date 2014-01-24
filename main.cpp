@@ -40,14 +40,15 @@ int main(int argc, const char * argv[])
 
 		TInt src = Ss.GetInt(0);
 		TInt dest;
-		if(Ss.GetFld(5) == " ")
+		TStr destString = Ss.GetFld(5);
+		if(Ss.IsInt(5))
 		{
+			dest = Ss.GetInt(5);
+		}
+		else{
 			badcall = 1;
 			cout << badcall << "\n";
 			dest = 0;
-		}
-		else{
-			dest = Ss.GetInt(5);
 		}
 		TStr locsrc = Ss.GetFld(3); //Has numbers/letters
 		TStr locdest = "Hello";//Where is it?
