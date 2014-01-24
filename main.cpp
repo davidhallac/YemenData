@@ -20,8 +20,30 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 
-	TStr testfile = "./TestData.csv";
+	//TZipIn zipfile("./TestData.csv.bz2");
+	TStr testfile = "./TestData2.csv";
 	TSsParser Ss(testfile, ssfCommaSep);
+	while(Ss.Next())
+	{
+		cout << Ss.GetFld(0) << "\n";
+		TPhoneCall call;
+		TInt src = Ss.GetInt(0);
+		TInt dest = Ss.GetInt(5);
+		TStr locsrc = Ss.GetFld(3);
+		TStr locdest = "Hello";//Ss.GetFld(3);
+		TStr duration = Ss.GetFld(11);
+		TInt starttime = Ss.GetInt(9);
+
+		call.setVals(src, dest, locsrc, locdest, duration, starttime);
+	}
+
+
+	/*TFOut fout("a.bin"); 
+	call.Save(fout);
+	TPhoneCall a;
+	TFIn fin("a.bin"); 
+ 	a.Load(fin);
+ 	cout << a.getSrc() << "\n";*/
 
 
 
