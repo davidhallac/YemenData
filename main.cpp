@@ -40,8 +40,8 @@ int main(int argc, const char * argv[])
 		TStr dest = Ss.GetFld(5);
 		TStr locsrc = Ss.GetFld(3);
 		TStr locdest = "Hello";//Ss.GetFld(3);
-		TInt duration = Ss.GetInt(11);
-		TStr starttime = Ss.GetFld(9);
+		TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
+		TInt starttime = Ss.GetInt(9);
 
 		call.setVals(src, dest, locsrc, locdest, duration, starttime);
 	}
