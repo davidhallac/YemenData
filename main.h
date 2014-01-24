@@ -43,7 +43,7 @@ public:
 		starttime = sttime;
 	}
 
-	TStr getSrc()
+	TInt getSrc()
 	{
 		return source;
 	}
