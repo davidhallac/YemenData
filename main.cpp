@@ -36,7 +36,7 @@ int main(int argc, const char * argv[])
 		TPhoneCall call;
 		
 		//Now, parse into Int
-		TStr src = Ss.GetFld(0);
+		TInt src = Ss.GetInt(0);
 		TStr dest = Ss.GetFld(5);
 		TStr locsrc = Ss.GetFld(3);
 		TStr locdest = "Hello";//Ss.GetFld(3);

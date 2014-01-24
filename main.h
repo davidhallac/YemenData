@@ -5,7 +5,7 @@
 class TPhoneCall
 {
 private:
-	TStr source;
+	TInt source;
 	TStr dest;
 	TStr locsrc;
 	TStr locdest;
@@ -33,7 +33,7 @@ public:
 	 	starttime.Save(SOut);  
 	}
 
-	 void setVals(TStr src, TStr dst, TStr lsrc, TStr ldest, TStr dur, TStr sttime)
+	 void setVals(TInt src, TStr dst, TStr lsrc, TStr ldest, TStr dur, TStr sttime)
 	{
 		source = src;
 		dest = dst;
