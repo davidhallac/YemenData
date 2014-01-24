@@ -52,7 +52,7 @@ int main(int argc, const char * argv[])
 			dest = 0;
 		}
 		TStr locsrc = Ss.GetFld(3); //Has numbers/letters
-		TStr locdest = "Hello";//Where is it?
+		TInt locdest = 0;//Where is it?
 		TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
 		TInt starttime = Ss.GetInt(9);
 
