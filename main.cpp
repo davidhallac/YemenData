@@ -35,9 +35,20 @@ int main(int argc, const char * argv[])
 			cout << counter << ", " << Ss.GetFld(0) << "\n";		
 		TPhoneCall call;
 		
-		//Now, parse into Int
+		//Flag for "bad" call
+		TInt badcall = 0;
+
 		TInt src = Ss.GetInt(0);
-		TStr dest = Ss.GetFld(5); //Sometimes empty
+		TInt dest;
+		if(Ss.GetFld(5) == " ")
+		{
+			badCall = 1;
+			cout << badCall << "\n";
+			dest = 0;
+		}
+		else{
+			dest = Ss.GetInt(5);
+		}
 		TStr locsrc = Ss.GetFld(3); //Has numbers/letters
 		TStr locdest = "Hello";//Where is it?
 		TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
