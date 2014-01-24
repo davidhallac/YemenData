@@ -28,42 +28,51 @@ int main(int argc, const char * argv[])
     TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
     TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
-	TVec<TPhoneCall> PhoneV(10000000, 0);
-	while(Ss.Next())
+	TVec<TPhoneCall> PhoneV(15000000, 0);
+	Ss.Next();
+	while(!Ss.Eof())
 	{
-		//To see how fast the code is running
-		counter = counter + 1;
-		if (counter % 1000000 == 1)
-			cout << counter << ", " << Ss.GetFld(0) << "\n";		
-		TPhoneCall call;
-		
-		//Flag for "bad" call
-		TInt badcall = 0;
-
-		TInt src = Ss.GetInt(0);
-		TInt dest;
-		TStr destString = Ss.GetFld(5);
-		if(Ss.IsInt(5))
+		//Find Day of call
+		TInt day = Ss.GetInt(9)/1000000;
+		while(!Ss.Eof() && (Ss.GetInt(9)/10000000) == day)
 		{
-			dest = Ss.GetInt(5);
-		}
-		else{ //About 1 error like this per 25,000 calls. Just ignore these
-			badcall = 1;
-			dest = 0;
-		}
-		TStr locsrc = Ss.GetFld(3); //Has numbers/letters
-		TInt locdest = 0;//Where is it?
-		TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
-		TInt starttime = Ss.GetInt(9);
+			//To see how fast the code is running
+			counter = counter + 1;
+			if (counter % 1000000 == 1)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";		
+			
+			TPhoneCall call;
+			TInt badcall = 0; 	//Flag for "bad" call
 
-		call.setVals(src, dest, locsrc, locdest, duration, starttime);
-		
-		if(!badcall)
-			PhoneV.Add(call);
+			TInt src = Ss.GetInt(0);
+			TInt dest;
+			if(Ss.IsInt(5))
+			{
+				dest = Ss.GetInt(5);
+			}
+			else{ //About 1 error like this per 25,000 calls. Just ignore these
+				badcall = 1;
+				dest = 0;
+			}
+			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
+			TInt locdest = 0;//Where is it?
+			TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
+			TInt starttime = Ss.GetInt(9);
+
+			call.setVals(src, dest, locsrc, locdest, duration, starttime);
+			
+			if(!badcall)
+				PhoneV.Add(call);
+			
+			Ss.Next();
+
+		}
+
+		TFOut fout("a.bin");
+		PhoneV.Save(fout);
 
 	}
-	TFOut fout("a.bin");
-	PhoneV.Save(fout);
+
 
 	//load/save code. Seems to be working
 	/*TFOut fout("a.bin"); 
