@@ -25,8 +25,8 @@ int main(int argc, const char * argv[])
 	//TZipIn ZipIn("./TestData2.csv.bz2");
 	
 	//TStr testfile = "./TestData2.csv";
-        TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
-        TSsParser Ss(testfile, ssfCommaSep);
+    TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
+    TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
 	while(Ss.Next())
 	{
