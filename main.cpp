@@ -58,7 +58,7 @@ int main(int argc, const char * argv[])
 
 		call.setVals(src, dest, locsrc, locdest, duration, starttime);
 		
-		//vec.add(call)
+		PhoneV.Add(call);
 
 	}
 	TFOut fout("a.bin");
