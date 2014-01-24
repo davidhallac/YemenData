@@ -26,10 +26,12 @@ int main(int argc, const char * argv[])
 	
 	TStr testfile = "./TestData2.csv";
 	TSsParser Ss(testfile, ssfCommaSep);
+	TInt counter = 0;
 	while(Ss.Next())
 	{
-		//cout << Ss.GetFld(0) << "\n";
-		
+		counter = counter + 1;
+		if (counter % 1000000 == 1)
+			cout << counter << ", " << Ss.GetFld(0) << "\n";		
 		TPhoneCall call;
 		
 		//Now, parse into Int
