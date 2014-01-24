@@ -9,7 +9,7 @@ private:
 	TStr dest;
 	TStr locsrc;
 	TStr locdest;
-	TStr duration;
+	TInt duration;
 	TStr starttime;
 
 public:
@@ -33,7 +33,7 @@ public:
 	 	starttime.Save(SOut);  
 	}
 
-	 void setVals(TInt src, TStr dst, TStr lsrc, TStr ldest, TStr dur, TStr sttime)
+	 void setVals(TInt src, TStr dst, TStr lsrc, TStr ldest, TInt dur, TStr sttime)
 	{
 		source = src;
 		dest = dst;
