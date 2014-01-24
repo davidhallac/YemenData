@@ -34,7 +34,7 @@ int main(int argc, const char * argv[])
 	{
 		//Find Day of call
 		TInt day = Ss.GetInt(9)/1000000;
-		cout << day << "\n";
+		cout << day << " " << Ss.GetInt(9) << "\n";
 		while(!Ss.Eof() && (Ss.GetInt(9)/10000000) == day)
 		{
 			//To see how fast the code is running
