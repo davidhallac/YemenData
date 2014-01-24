@@ -42,8 +42,8 @@ int main(int argc, const char * argv[])
 		TInt dest;
 		if(Ss.GetFld(5) == " ")
 		{
-			badCall = 1;
-			cout << badCall << "\n";
+			badcall = 1;
+			cout << badcall << "\n";
 			dest = 0;
 		}
 		else{
