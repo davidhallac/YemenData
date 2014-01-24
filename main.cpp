@@ -37,7 +37,7 @@ int main(int argc, const char * argv[])
 		
 		//Now, parse into Int
 		TInt src = Ss.GetInt(0);
-		TStr dest = Ss.GetFld(5);
+		TInt dest = Ss.GetFld(5);
 		TStr locsrc = Ss.GetFld(3);
 		TStr locdest = "Hello";//Ss.GetFld(3);
 		TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
