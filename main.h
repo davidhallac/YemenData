@@ -43,9 +43,9 @@ public:
 		starttime = sttime;
 	}
 
-	TInt getSrc()
+	TInt getTime()
 	{
-		return source;
+		return starttime;
 	}
 
 };

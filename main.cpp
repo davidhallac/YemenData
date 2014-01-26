@@ -20,12 +20,22 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 
+	if (argc < 2)
+	{
+		cout << "Not enough arguments!" << "\n";
+		return 0;
+	}
+
+	TStr testfile = "./TestData2.csv.bz2";
 		//Why can't I TZipIn this zipfile?
-	//cout << TZipIn::IsZipFNm("./TestData2.csv.bz2") << "\n";
-	//TZipIn ZipIn("./TestData2.csv.bz2");
+	cout << TZipIn::IsZipFNm("TestData2.csv.bz2") << "\n";
+	TZipIn ZipIn(testfile);
 	
 	//TStr testfile = "./TestData2.csv";
-    TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
+    //TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
+    //TStr testfile = argv[1];
+
+
     TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
 	TVec<TPhoneCall> PhoneV(15000000, 0);
@@ -44,7 +54,10 @@ int main(int argc, const char * argv[])
 			TPhoneCall call;
 			TInt badcall = 0; 	//Flag for "bad" call
 
+			//Source ID
 			TInt src = Ss.GetInt(0);
+
+			//Destination ID
 			TInt dest;
 			if(Ss.IsInt(5))
 			{
@@ -54,13 +67,20 @@ int main(int argc, const char * argv[])
 				badcall = 1;
 				dest = 0;
 			}
+
+			//Source Location
 			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
+			
+			//Destination Location???
 			TInt locdest = 0;//Where is it?
+
+			//Duration of Call (1 if SMS)
 			TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
+
+			//Time of Call
 			TInt starttime = Ss.GetInt(9);
 
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
-			
 			if(!badcall)
 				PhoneV.Add(call);
 			
@@ -68,8 +88,8 @@ int main(int argc, const char * argv[])
 
 		}
 		cout << day << " " << Ss.GetInt(9)/1000000 << "\n";
-		TFOut fout("a.bin");
-		PhoneV.Save(fout);
+		//TFOut fout("a.bin");
+		//PhoneV.Save(fout);
 
 	}
 
@@ -92,7 +112,6 @@ int main(int argc, const char * argv[])
 		cout << "Could not open file\n";
 		return 0;
 	}*/
-
 	//io::CSVReader<3, io::trim_chars<' '>, io::no_quote_escape<','>> in("TestData.csv");
   	//in.read_header(io::ignore_extra_column, "vendor", "size", "speed");
   	//std::string vendor; int size; double speed;
@@ -100,7 +119,6 @@ int main(int argc, const char * argv[])
     // do stuff with the data
   		//cout << vendor << "\n";
   	//}
-
 	//Create new graph
 	/*PNEGraph G = PNEGraph::TObj::New();
 	string phonecall;
