@@ -49,6 +49,7 @@ int main(int argc, const char * argv[])
 		{
 			//To see how fast the code is running
 			counter = counter + 1;
+			cout << counter << "\n";
 			if (counter % 10000/*1000000*/ == 1)
 				cout << counter << ", " << Ss.GetFld(9) << "\n";		
 			
@@ -71,7 +72,7 @@ int main(int argc, const char * argv[])
 
 			//Source Location
 			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
-			
+
 			//Destination Location???
 			TInt locdest = 0;//Where is it?
 
