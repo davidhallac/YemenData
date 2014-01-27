@@ -30,12 +30,12 @@ int main(int argc, const char * argv[])
 	//TZipIn ZipIn("TestData3.csv.bz2");
 	
 	//TStr testfile = "./TestData3.csv";
-    TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
+    //TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
     //TStr testfile = argv[1];
 
-	//TSsParser Ss(argv[1], ssfCommaSep);
+	TSsParser Ss(argv[1], ssfCommaSep);
 	//TSsParser Ss("TestData3.zip", ssfCommaSep);
-	TSsParser Ss(testfile, ssfCommaSep);
+	//TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
 
 	Ss.Next();
@@ -81,18 +81,12 @@ int main(int argc, const char * argv[])
 			TInt duration = (durfield).GetInt(); //Sometimes has a "." at the end
 			//cout << Ss.GetFld(11) << ", " << duration << "\n";
 
-			if (counter == 379283)
-				cout << counter << ", " << Ss.GetFld(9) << "\n";
-
 			//Time of Call
 			TInt starttime;
 			if(TStr(Ss.GetFld(9)).Len() >= 14)
 				starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
 			else
 				badcall = 1;
-
-			if (counter == 379283)
-				cout << counter << ", " << Ss.GetFld(9) << "\n";
 
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
@@ -110,10 +104,10 @@ int main(int argc, const char * argv[])
 
 	//load/save code. Seems to be working
 	TVec<TPhoneCall> PhoneLoad;
-	TFIn fin("20100430"); 
+	TFIn fin("20100510"); 
  	PhoneLoad.Load(fin);
 
- 	//cout << PhoneLoad[1].getTime() << "\n";
+ 	cout << PhoneLoad[1].getTime() << "\n";
 
 
 	//NON-SNAP METHOD
