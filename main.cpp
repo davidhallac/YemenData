@@ -49,7 +49,7 @@ int main(int argc, const char * argv[])
 		{
 			//To see how fast the code is running
 			counter = counter + 1;
-			if (counter % 1000000 == 1)
+			if (counter % 10000/*1000000*/ == 1)
 				cout << counter << ", " << Ss.GetInt(0) << "\n";		
 			
 			TPhoneCall call;
