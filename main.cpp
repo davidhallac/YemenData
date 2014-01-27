@@ -87,16 +87,12 @@ int main(int argc, const char * argv[])
 			//Time of Call
 			TInt starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
 
-
 			if (counter == 379283)
 				cout << counter << ", " << Ss.GetFld(0) << "\n";
 
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
 				PhoneV.Add(call);
-			
-			if (counter == 379283)
-				cout << counter << ", " << Ss.GetFld(0) << "\n";
 
 			Ss.Next();
 
