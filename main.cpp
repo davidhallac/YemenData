@@ -88,7 +88,7 @@ int main(int argc, const char * argv[])
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
 				PhoneV.Add(call);
-			
+			cout << counter << ", " << Ss.GetFld(0) << "\n";
 			Ss.Next();
 
 		}
