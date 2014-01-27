@@ -49,7 +49,6 @@ int main(int argc, const char * argv[])
 		{
 			//To see how fast the code is running
 			counter = counter + 1;
-			cout << counter << ", " << Ss.GetFld(0) << "\n";
 			if (counter % 10000/*1000000*/ == 1)
 				cout << counter << ", " << Ss.GetFld(9) << "\n";		
 			
@@ -70,11 +69,17 @@ int main(int argc, const char * argv[])
 				dest = 0;
 			}
 
+			if (counter == 379283)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";	
+
 			//Source Location
 			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
 
 			//Destination Location???
 			TInt locdest = 0;//Where is it?
+
+			if (counter == 379283)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";
 
 			//Duration of Call (1 if SMS)
 			TStr durfield = Ss.GetFld(11);
@@ -88,7 +93,7 @@ int main(int argc, const char * argv[])
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
 				PhoneV.Add(call);
-			cout << counter << ", " << Ss.GetFld(0) << "\n";
+			
 			Ss.Next();
 
 		}
