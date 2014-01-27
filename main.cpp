@@ -26,30 +26,31 @@ int main(int argc, const char * argv[])
 		return 0;
 	}
 
-	TStr testfile = "./TestData2.csv.bz2";
-		//Why can't I TZipIn this zipfile?
-	cout << TZipIn::IsZipFNm("TestData2.csv.bz2") << "\n";
-	TZipIn ZipIn(testfile);
+	//cout << TZipIn::IsZipFNm("TestData2.csv.bz2") << "\n";
+	//TZipIn ZipIn("TestData3.csv.bz2");
 	
-	//TStr testfile = "./TestData2.csv";
-    //TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
+	//TStr testfile = "./TestData3.csv";
+    TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
     //TStr testfile = argv[1];
 
-
-    TSsParser Ss(testfile, ssfCommaSep);
+	//TSsParser Ss(argv[1], ssfCommaSep);
+	//TSsParser Ss("TestData3.zip", ssfCommaSep);
+	TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
-	TVec<TPhoneCall> PhoneV(15000000, 0);
+
 	Ss.Next();
 	while(!Ss.Eof())
 	{
+		TVec<TPhoneCall> PhoneV(15000000, 0);
 		//Find Day of call
-		TInt day = Ss.GetInt(9)/1000000;
-		while( !Ss.Eof() && (Ss.GetInt(9)/1000000) == day)
+		TInt day = (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt());
+		
+		while( !Ss.Eof() && ((TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt())) == day)
 		{
 			//To see how fast the code is running
 			counter = counter + 1;
 			if (counter % 1000000 == 1)
-				cout << counter << ", " << Ss.GetFld(0) << "\n";		
+				cout << counter << ", " << Ss.GetInt(0) << "\n";		
 			
 			TPhoneCall call;
 			TInt badcall = 0; 	//Flag for "bad" call
@@ -75,10 +76,13 @@ int main(int argc, const char * argv[])
 			TInt locdest = 0;//Where is it?
 
 			//Duration of Call (1 if SMS)
-			TStr duration = Ss.GetFld(11); //Sometimes has a "." at the end
+			TStr durfield = Ss.GetFld(11);
+			durfield.DelChAll('.');
+			TInt duration = (durfield).GetInt(); //Sometimes has a "." at the end
+			//cout << Ss.GetFld(11) << ", " << duration << "\n";
 
 			//Time of Call
-			TInt starttime = Ss.GetInt(9);
+			TInt starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
 
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
@@ -87,21 +91,19 @@ int main(int argc, const char * argv[])
 			Ss.Next();
 
 		}
-		cout << day << " " << Ss.GetInt(9)/1000000 << "\n";
-		//TFOut fout("a.bin");
-		//PhoneV.Save(fout);
+		cout << day << " " << (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt()) << "\n";
+		TFOut fout(day.GetStr());
+		PhoneV.Save(fout);
 
 	}
 
 
 	//load/save code. Seems to be working
-	/*TFOut fout("a.bin"); 
-	call.Save(fout);
-	TPhoneCall a;
-	TFIn fin("a.bin"); 
- 	a.Load(fin);
- 	cout << a.getSrc() << "\n";*/
+	TVec<TPhoneCall> PhoneLoad;
+	TFIn fin("20100430"); 
+ 	PhoneLoad.Load(fin);
 
+ 	//cout << PhoneLoad[1].getTime() << "\n";
 
 
 	//NON-SNAP METHOD

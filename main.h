@@ -9,10 +9,20 @@ private:
 	TInt dest;
 	TStr locsrc;
 	TInt locdest;
-	TStr duration;
+	TInt duration;
 	TInt starttime;
 
 public:
+	TPhoneCall() {
+		source = 0;
+		dest = 0;
+		locsrc = "";
+		locdest = 0;
+		duration = 0;
+		starttime = 0;
+	}
+
+	explicit TPhoneCall(TSIn& SIn){Load(SIn);}
 
 	void Load(TSIn& SIn) 
 	{  
@@ -33,7 +43,7 @@ public:
 	 	starttime.Save(SOut);  
 	}
 
-	 void setVals(TInt src, TInt dst, TStr lsrc, TInt ldest, TStr dur, TInt sttime)
+	 void setVals(TInt src, TInt dst, TStr lsrc, TInt ldest, TInt dur, TInt sttime)
 	{
 		source = src;
 		dest = dst;
@@ -51,6 +61,6 @@ public:
 };
 
 typedef TVec<TPhoneCall> TPhoneCallV;
-//Add using TVec defined stuff
+//Add using TVec defined functions
 
 
