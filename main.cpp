@@ -75,9 +75,6 @@ int main(int argc, const char * argv[])
 			//Destination Location???
 			TInt locdest = 0;//Where is it?
 
-			if (counter == 379283)
-				cout << counter << ", " << Ss.GetFld(0) << "\n";
-
 			//Duration of Call (1 if SMS)
 			TStr durfield = Ss.GetFld(11);
 			durfield.DelChAll('.');
@@ -90,10 +87,17 @@ int main(int argc, const char * argv[])
 			//Time of Call
 			TInt starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
 
+
+			if (counter == 379283)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";
+
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
 			if(!badcall)
 				PhoneV.Add(call);
 			
+			if (counter == 379283)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";
+
 			Ss.Next();
 
 		}
