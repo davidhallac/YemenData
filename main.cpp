@@ -67,10 +67,7 @@ int main(int argc, const char * argv[])
 			else{ //About 1 error like this per 25,000 calls. Just ignore these
 				badcall = 1;
 				dest = 0;
-			}
-
-			if (counter == 379283)
-				cout << counter << ", " << Ss.GetFld(0) << "\n";	
+			}	
 
 			//Source Location
 			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
@@ -86,6 +83,9 @@ int main(int argc, const char * argv[])
 			durfield.DelChAll('.');
 			TInt duration = (durfield).GetInt(); //Sometimes has a "." at the end
 			//cout << Ss.GetFld(11) << ", " << duration << "\n";
+
+			if (counter == 379283)
+				cout << counter << ", " << Ss.GetFld(0) << "\n";
 
 			//Time of Call
 			TInt starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
