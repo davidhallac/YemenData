@@ -66,7 +66,7 @@ int main(int argc, const char * argv[])
 			}
 			else{ //About 1 error like this per 25,000 calls. Just ignore these
 				badcall = 1;
-				dest = 0;
+				//dest = 0;
 			}	
 
 			//Source Location
@@ -85,7 +85,11 @@ int main(int argc, const char * argv[])
 				cout << counter << ", " << Ss.GetFld(9) << "\n";
 
 			//Time of Call
-			TInt starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
+			TInt starttime;
+			if(TStr(Ss.GetFld(9)).Len() >= 14)
+				starttime = (TStr(Ss.GetFld(9)).GetSubStr(8)).GetInt();
+			else
+				badcall = 1;
 
 			if (counter == 379283)
 				cout << counter << ", " << Ss.GetFld(9) << "\n";
