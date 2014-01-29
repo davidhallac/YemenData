@@ -13,7 +13,7 @@
 #include <string>
 #include "../../snap-core/Snap.h"
 //#include "csv_v3.h"
-#include "main.h"
+#include "process.h"
 
 using namespace std;
 
@@ -79,8 +79,7 @@ int main(int argc, const char * argv[])
 			TStr durfield = Ss.GetFld(11);
 			durfield.DelChAll('.');
 			TInt duration = (durfield).GetInt(); //Sometimes has a "." at the end
-			//cout << Ss.GetFld(11) << ", " << duration << "\n";
-
+			
 			//Time of Call
 			TInt starttime;
 			if(TStr(Ss.GetFld(9)).Len() >= 14)
@@ -103,11 +102,11 @@ int main(int argc, const char * argv[])
 
 
 	//load/save code. Seems to be working
-	TVec<TPhoneCall> PhoneLoad;
-	TFIn fin("20100510"); 
- 	PhoneLoad.Load(fin);
+	//TVec<TPhoneCall> PhoneLoad;
+	//TFIn fin("20100510"); 
+	//PhoneLoad.Load(fin);
+ 	//cout << PhoneLoad[1].getTime() << "\n";
 
- 	cout << PhoneLoad[1].getTime() << "\n";
 
 
 	//NON-SNAP METHOD
