@@ -56,7 +56,7 @@ int main(int argc, const char * argv[])
 			TInt badcall = 0; 	//Flag for "bad" call
 
 			//Source ID
-			TInt src = Ss.GetInt(0);
+			TUInt64 src = (TStr(Ss.GetFld(0))).GetUInt64();
 
 			//Destination ID
 			TInt dest;
