@@ -94,7 +94,7 @@ int main(int argc, const char * argv[])
 			Ss.Next();
 
 		}
-		cout << day << " " << (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt()) << "\n";
+		cout << day << " " << (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt()) << ", " << PhoneV.Len() << "\n";
 		TFOut fout(day.GetStr());
 		PhoneV.Save(fout);
 

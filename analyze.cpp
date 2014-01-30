@@ -23,8 +23,8 @@ int main(int argc, const char * argv[])
 	//TFIn fin("OldFiles/20100430"); 
 	TFIn fin("20100430"); 
 	PhoneLoad.Load(fin);
- 	cout << PhoneLoad[0].getSource() << "\n";
- 	cout << PhoneLoad[997].getDuration() << "\n";
+ 	cout << PhoneLoad[0].getDest() << "\n";
+ 	cout << PhoneLoad[997].getDest() << "\n";
  	cout << PhoneLoad[997].getTime() << "\n";
  	cout << PhoneLoad[PhoneLoad.Len()-1].getTime() << "\n";
 
