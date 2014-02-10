@@ -18,10 +18,15 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+	if (argc < 2)
+	{
+		cout << "Not enough arguments!" << "\n";
+		return 0;
+	}
 
 	TVec<TPhoneCall> PhoneLoad;
-	//TFIn fin("OldFiles/20100430"); 
-	TFIn fin("20100501"); 
+	//TFIn fin("20100501"); 
+	TFIn fin(argv[1]);
 	PhoneLoad.Load(fin);
 
 
@@ -50,10 +55,10 @@ int main(int argc, const char * argv[])
 	
 
 	//START TIME
-	/*int total = PhoneLoad.Len();
+	int total = PhoneLoad.Len();
 	int counter = 0;
 	int thresholds [] = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000, 150000, 160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000,240000};
-
+	float percentages [24];
 	for(int j=0; j < sizeof(thresholds)/sizeof(int); j++)
 	{
 		counter = 0;
@@ -66,9 +71,26 @@ int main(int argc, const char * argv[])
 		}
 		float percentage = counter*100;
 		percentage = percentage/total;
-		//cout << percentage << ", " << counter << ", " << thresholds[j] << "\n";
-		cout << percentage << "\n";
-	}*/
+		//cout << percentage << "\n";
+		percentages[j] = percentage;
+	}
+	float marginals [24];
+	marginals[0] = 100 - percentages[0];
+	for(int j = 1; j < 24; j++)
+	{
+		marginals[j] = percentages[j-1] - percentages[j];
+	}
+	//Write marginals to file (append)
+	ofstream fileout;
+	fileout.open("startTimes", ios::app);
+	fileout << argv[1];
+	fileout << marginals[0];
+	for(int j = 0; j < 24; j++)
+	{
+		fileout << ",";
+		fileout << marginals[j];
+	}
+	fileout << "\n";
 
 
 	//SOURCE ID
@@ -128,7 +150,7 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	int counter = 0;
+	/*int counter = 0;
 	for (int i=0; i <= PhoneLoad.Len(); i++) 
 	{
 		if (PhoneLoad[i].getLocDest() == 1 && PhoneLoad[i].getDuration() > 1)
@@ -136,7 +158,7 @@ int main(int argc, const char * argv[])
 			counter++;
 		}
 	}	
-	cout << counter << "\n";
+	cout << counter << "\n";*/
 }
 
 
