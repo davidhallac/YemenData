@@ -20,7 +20,7 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 
-	if (argc < 2)
+	if (argc < 3)
 	{
 		cout << "Not enough arguments!" << "\n";
 		return 0;
@@ -59,10 +59,10 @@ int main(int argc, const char * argv[])
 			TUInt64 src = (TStr(Ss.GetFld(0))).GetUInt64();
 
 			//Destination ID
-			TInt dest;
+			TUInt64 dest;
 			if(Ss.IsInt(5))
 			{
-				dest = Ss.GetInt(5);
+				dest = (TStr(Ss.GetFld(5))).GetUInt64();
 			}
 			else{ //About 1 error like this per 25,000 calls. Just ignore these
 				badcall = 1;
@@ -73,7 +73,7 @@ int main(int argc, const char * argv[])
 			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
 
 			//Destination Location???
-			TInt locdest = 0;//Where is it?
+			TInt locdest = Ss.GetInt(8);//Where is it? Use FollowupCallType for now
 
 			//Duration of Call (1 if SMS)
 			TStr durfield = Ss.GetFld(11);
@@ -95,7 +95,7 @@ int main(int argc, const char * argv[])
 
 		}
 		cout << day << " " << (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt()) << ", " << PhoneV.Len() << "\n";
-		TFOut fout(day.GetStr());
+		TFOut fout(argv[2] + day.GetStr());
 		PhoneV.Save(fout);
 
 	}

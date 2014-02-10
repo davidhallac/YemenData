@@ -6,7 +6,7 @@ class TPhoneCall
 {
 private:
 	TUInt64 source;
-	TInt dest;
+	TUInt64 dest;
 	TStr locsrc;
 	TInt locdest;
 	TInt duration;
@@ -43,7 +43,7 @@ public:
 	 	starttime.Save(SOut);  
 	}
 
-	 void setVals(TUInt64 src, TInt dst, TStr lsrc, TInt ldest, TInt dur, TInt sttime)
+	 void setVals(TUInt64 src, TUInt64 dst, TStr lsrc, TInt ldest, TInt dur, TInt sttime)
 	{
 		source = src;
 		dest = dst;
@@ -53,17 +53,12 @@ public:
 		starttime = sttime;
 	}
 
-	TInt getTime()
-	{
-		return starttime;
-	}
-
 	TUInt64 getSource()
 	{
 		return source;
 	}
 
-	TInt getDest()
+	TUInt64 getDest()
 	{
 		return dest;
 	}
@@ -71,6 +66,16 @@ public:
 	TStr getLocSrc()
 	{
 		return locsrc;
+	}
+
+	TInt getLocDest()
+	{
+		return locdest;
+	}
+
+	TInt getTime()
+	{
+		return starttime;
 	}
 
 	TInt getDuration()
