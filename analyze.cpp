@@ -89,7 +89,7 @@ int main(int argc, const char * argv[])
 	//Write marginals to file (append)
 	ofstream fileout;
 	fileout.open("startTimes.csv", ios::app);
-	fileout << argv[1];
+	fileout << subbuff;
 	fileout << ",";
 	fileout << total;
 	fileout << ",";
