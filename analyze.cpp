@@ -82,9 +82,9 @@ int main(int argc, const char * argv[])
 		marginals[j] = percentages[j-1] - percentages[j];
 	}
 
-	char subbuff[8];
+	char subbuff[9];
 	memcpy( subbuff, &(argv[1])[13], 8 );
-	//subbuff[8] = '\0';
+	subbuff[8] = '\0';
 	cout << subbuff << "\n";
 	//Write marginals to file (append)
 	ofstream fileout;
