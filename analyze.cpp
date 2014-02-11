@@ -71,6 +71,7 @@ int main(int argc, const char * argv[])
 		}
 		float percentage = counter*100;
 		percentage = percentage/total;
+		
 		//cout << percentage << "\n";
 		percentages[j] = percentage;
 	}
@@ -82,15 +83,19 @@ int main(int argc, const char * argv[])
 	}
 	//Write marginals to file (append)
 	ofstream fileout;
-	fileout.open("startTimes", ios::app);
+	fileout.open("startTimes.csv", ios::app);
 	fileout << argv[1];
+	fileout << ",";
+	fileout << total;
+	fileout << ",";
 	fileout << marginals[0];
-	for(int j = 0; j < 24; j++)
+	for(int j = 1; j < 24; j++)
 	{
 		fileout << ",";
 		fileout << marginals[j];
 	}
 	fileout << "\n";
+
 
 
 	//SOURCE ID
