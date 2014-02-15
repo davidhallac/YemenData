@@ -173,16 +173,16 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	/*int counter = 0;
+	int counter = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
-		if (strncmp (PhoneLoad[i].getLocSrc().CStr(), "", 1) != 0 && PhoneLoad[i].getDuration() > 1)
+		if (strncmp (PhoneLoad[i].getLocDest().CStr(), "", 1) != 0 && strncmp (PhoneLoad[i].getLocSrc().CStr(), "", 1) != 0 && PhoneLoad[i].getDuration() == 1)
 		{
 			counter++;
 		}
 	}	
 	cout << counter << "\n";
-	cout << PhoneLoad.Len() << "\n";*/
+	cout << PhoneLoad.Len() << "\n";
 
 }
 

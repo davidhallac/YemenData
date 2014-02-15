@@ -164,23 +164,35 @@ int main(int argc, const char * argv[])
 								}
 								//if(sanitytest == 1000000 || elements == -1)
 								//	cout << "Missed element #" << counter << "\n";
-							}
-							//Need to fill in LocSrc
-							/*for(int j = PhoneV.Len()-1; j >= 0; j++)
-							{
-								//if(PhoneV[j].getSource() == src && PhoneV[j].getDest() == dest)
-								if(PhoneV[j].getSource() > dest)
-								{
-									//call.setLocDest(PhoneV[j].getLocDest());
-									//PhoneV.Del(j);
-									break;
-								}
-							}	*/					
+							}			
 						}
 						else
 						{
 							//Need to fill in LocDest
-							
+							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
+							{
+								//Vast majority of repeats are one behind
+								PhoneV.Last().setLocDest(locdest);
+							}
+							else
+							{
+								//Unlucky (< 0.5% of repeats). No way but to start searching
+								int sanitytest = 0;
+								int elements = PhoneV.Len()-1;
+								//Increase this value to miss NO results
+								while(sanitytest < 100000 && elements >= 0)
+								{
+									if(PhoneV[elements].getSource() == src && PhoneV[elements].getDest() == dest)
+									{
+										PhoneV[elements].setLocDest(locdest);
+										break;
+									}
+									sanitytest++;
+									elements--;
+								}
+								//if(sanitytest == 1000000 || elements == -1)
+								//	cout << "Missed element #" << counter << "\n";
+							}
 						}
 					}
 					else
