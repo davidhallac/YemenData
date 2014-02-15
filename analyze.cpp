@@ -181,8 +181,22 @@ int main(int argc, const char * argv[])
 			counter++;
 		}
 	}	
-	cout << counter << "\n";
-	cout << PhoneLoad.Len() << "\n";
+
+	char subbuff[9];
+	memcpy( subbuff, &(argv[1])[13], 8 );
+	subbuff[8] = '\0';
+	cout << subbuff << "\n";
+	//Write to file (append)
+	ofstream fileout;
+	fileout.open("startTimes.csv", ios::app);
+	fileout << subbuff;
+	fileout << ",";
+	fileout << counter;
+	fileout << ",";
+	fileout << PhoneLoad.Len();
+	fileout << "\n";
+
+
 
 }
 
