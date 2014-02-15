@@ -173,12 +173,17 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	int counter = 0;
+	int counter1 = 0;
+	int counter2 = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
 		if (strncmp (PhoneLoad[i].getLocDest().CStr(), "", 1) != 0 && strncmp (PhoneLoad[i].getLocSrc().CStr(), "", 1) != 0 && PhoneLoad[i].getDuration() == 1)
 		{
-			counter++;
+			counter1++;
+		}
+		else if (strncmp (PhoneLoad[i].getLocDest().CStr(), "", 1) != 0 && strncmp (PhoneLoad[i].getLocSrc().CStr(), "", 1) != 0 && PhoneLoad[i].getDuration() > 1)
+		{
+			counter2++;
 		}
 	}	
 
@@ -191,7 +196,9 @@ int main(int argc, const char * argv[])
 	fileout.open("startTimes.csv", ios::app);
 	fileout << subbuff;
 	fileout << ",";
-	fileout << counter;
+	fileout << counter1;
+	fileout << ",";
+	fileout << counter2;
 	fileout << ",";
 	fileout << PhoneLoad.Len();
 	fileout << "\n";
