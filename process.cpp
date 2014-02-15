@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cmath>
 #include "../../snap-core/Snap.h"
 //#include "csv_v3.h"
 #include "process.h"
@@ -26,17 +27,11 @@ int main(int argc, const char * argv[])
 		return 0;
 	}
 
-	//cout << TZipIn::IsZipFNm("TestData2.csv.bz2") << "\n";
-	//TZipIn ZipIn("TestData3.csv.bz2");
-	
-	//TStr testfile = "./TestData3.csv";
-    //TStr testfile = "../../../TRACK_REJ_CALLS_MAY_2010.csv";
-    //TStr testfile = argv[1];
-
 	TSsParser Ss(argv[1], ssfCommaSep);
-	//TSsParser Ss("TestData3.zip", ssfCommaSep);
-	//TSsParser Ss(testfile, ssfCommaSep);
 	TInt counter = 0;
+
+	//Hash Table
+	THash<TUInt64, TPhoneCall> repeatCalls;
 
 	Ss.Next();
 	while(!Ss.Eof())
@@ -55,25 +50,70 @@ int main(int argc, const char * argv[])
 			TPhoneCall call;
 			TInt badcall = 0; 	//Flag for "bad" call
 
-			//Source ID
-			TUInt64 src = (TStr(Ss.GetFld(0))).GetUInt64();
-
-			//Destination ID
+			TUInt64 src;
 			TUInt64 dest;
-			if(Ss.IsInt(5))
+			TStr locsrc;
+			TStr locdest;
+
+			if(Ss.GetInt(8) == 1)
 			{
-				dest = (TStr(Ss.GetFld(5))).GetUInt64();
+				//Source ID
+				src = (TStr(Ss.GetFld(0))).GetUInt64();
+
+				//Destination ID
+				if(Ss.IsInt(5))
+				{
+					TUInt64 temp = (TStr(Ss.GetFld(5))).GetUInt64();
+					//if(temp == 111 || temp == 8888 || temp == 7312345 || temp = 8889)
+					if(temp < 1000000 || temp == 7312345 || temp == 96773100004)
+						badcall = 1;
+					else
+					{
+						dest = (TStr(Ss.GetFld(5))).GetUInt64();
+						if (dest < 1000000000 && dest > 10000000)
+							dest = dest + 967000000000;
+				}	}
+				else
+				{ //About 1 error like this per 25,000 calls. Just ignore these
+					badcall = 1;
+				}	
+
+				//Source Location
+				locsrc = Ss.GetFld(3); //Has numbers/letters
+
+				//Destination Location???
+				locdest = "";//Doesn't exist
 			}
-			else{ //About 1 error like this per 25,000 calls. Just ignore these
+			else if(Ss.GetInt(8) == 2)
+			{
+				if(Ss.IsInt(5))
+				{
+					TUInt64 temp = (TStr(Ss.GetFld(5))).GetUInt64();
+					//if(temp == 111 || temp == 8888 || temp == 7312345 || temp = 8889)
+					if(temp < 1000000 || temp == 7312345 || temp == 96773100004)
+						badcall = 1;
+					else
+					{
+						src = (TStr(Ss.GetFld(5))).GetUInt64();
+						if (src < 1000000000 && src > 10000000)
+							src = src + 967000000000;
+					}
+				}
+				else
+				{ //About 1 error like this per 25,000 calls. Just ignore these
+					badcall = 1;
+				}
+
+				dest = (TStr(Ss.GetFld(0))).GetUInt64();
+
+				locsrc = "";
+
+				locdest = Ss.GetFld(3);
+			}
+			else
+			{
 				badcall = 1;
-				//dest = 0;
-			}	
-
-			//Source Location
-			TStr locsrc = Ss.GetFld(3); //Has numbers/letters
-
-			//Destination Location???
-			TInt locdest = Ss.GetInt(8);//Where is it? Use FollowupCallType for now
+			}
 
 			//Duration of Call (1 if SMS)
 			TStr durfield = Ss.GetFld(11);
@@ -88,8 +128,75 @@ int main(int argc, const char * argv[])
 				badcall = 1;
 
 			call.setVals(src, dest, locsrc, locdest, duration, starttime);
+			
 			if(!badcall)
-				PhoneV.Add(call);
+			{
+				//Hash Table:
+				if(repeatCalls.IsKey(src))	
+				{
+					//Check if most recent call was same one
+					if(abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
+					{
+						badcall = 1;
+						//cout << counter << "\n";
+						if(Ss.GetInt(8) == 1)
+						{
+							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
+							{
+								//Vast majority of repeats are one behind
+								PhoneV.Last().setLocSrc(locsrc);
+							}
+							else
+							{
+								//Unlucky (< 0.5% of repeats). No way but to start searching
+								int sanitytest = 0;
+								int elements = PhoneV.Len()-1;
+								//Increase this value to miss NO results
+								while(sanitytest < 100000 && elements >= 0)
+								{
+									if(PhoneV[elements].getSource() == src && PhoneV[elements].getDest() == dest)
+									{
+										PhoneV[elements].setLocSrc(locsrc);
+										break;
+									}
+									sanitytest++;
+									elements--;
+								}
+								//if(sanitytest == 1000000 || elements == -1)
+								//	cout << "Missed element #" << counter << "\n";
+							}
+							//Need to fill in LocSrc
+							/*for(int j = PhoneV.Len()-1; j >= 0; j++)
+							{
+								//if(PhoneV[j].getSource() == src && PhoneV[j].getDest() == dest)
+								if(PhoneV[j].getSource() > dest)
+								{
+									//call.setLocDest(PhoneV[j].getLocDest());
+									//PhoneV.Del(j);
+									break;
+								}
+							}	*/					
+						}
+						else
+						{
+							//Need to fill in LocDest
+							
+						}
+					}
+					else
+						repeatCalls.AddDat(src,call);
+
+				}	
+				else
+				{
+					repeatCalls.AddDat(src, call);
+				}
+				
+				
+
+				if(!badcall)
+					PhoneV.Add(call);
+			}
 
 			Ss.Next();
 

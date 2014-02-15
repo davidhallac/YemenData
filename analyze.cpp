@@ -12,6 +12,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <string.h>
 #include "../../snap-core/Snap.h"
 #include "process.h"
 using namespace std;
@@ -55,7 +56,7 @@ int main(int argc, const char * argv[])
 	
 
 	//START TIME
-	int total = PhoneLoad.Len();
+	/*int total = PhoneLoad.Len();
 	int counter = 0;
 	int thresholds [] = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000, 150000, 160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000,240000};
 	float percentages [24];
@@ -99,12 +100,13 @@ int main(int argc, const char * argv[])
 		fileout << ",";
 		fileout << marginals[j];
 	}
-	fileout << "\n";
+	fileout << "\n";*/
 
 
 
 	//SOURCE ID
-	/*int total = PhoneLoad.Len();
+	/*
+	int total = PhoneLoad.Len();
 	TVec<TUInt64> sources(total, 0);
 	for (int i=0; i <= PhoneLoad.Len(); i++) 
 	{
@@ -122,53 +124,66 @@ int main(int argc, const char * argv[])
 
 
 	}
-	cout << counter << "\n";*/
+	cout << counter << "\n";
+	cout << sources[1] << "\n";
+	cout << sources[500000] << "\n";
+	cout << sources[1000000] << "\n";
+	cout << sources[2000000] << "\n";
+	cout << sources[3000000] << "\n";
+	cout << sources[4000000] << "\n";
+	cout << sources[5000000] << "\n";*/
+
 
 
 
 	//DESTINATION ID
 	/*int total = PhoneLoad.Len();
-	TVec<TUInt64> sources(total, 0);
+	TVec<TUInt64> sourcesDest(total, 0);
 	for (int i=0; i <= PhoneLoad.Len(); i++) 
 	{
-		if(PhoneLoad[i].getDuration() == 1)	
-			sources.Add(PhoneLoad[i].getDest());
+		sourcesDest.Add(PhoneLoad[i].getDest());
 	}	
-	sources.Sort(true);
-	cout << sources.Len() << "\n";
+	sourcesDest.Sort(true);
+	cout << sourcesDest.Len() << "\n";
 
 	//Count number of unique elements
 	int counter = 0; //First element is always unique
-	for (int i = 1; i<= sources.Len(); i++)
+	for (int i = 1; i<= sourcesDest.Len(); i++)
 	{
-		if(sources[i] != sources[i-1])
+		if(sourcesDest[i] != sourcesDest[i-1])
+			counter++;
+
+	}
+	cout << counter << "unique";
+
+	counter = 0;
+	for (int i = 0; i< sourcesDest.Len(); i++)
+	{
+		if(sourcesDest[i] > 967730000000 && sourcesDest[i] < 967740000000 )
 			counter++;
 
 	}
 	cout << counter << "\n";
-
-	counter = 0;
-	for (int i = 0; i<= sources.Len(); i++)
-	{
-		if(sources[i] > 730000000 && sources[i] < 740000000 )
-			counter++;
-
-	}
-	cout << counter << "\n";*/
-
+	cout << sourcesDest[1] << "\n";
+	cout << sourcesDest[500000] << "\n";
+	cout << sourcesDest[1000000] << "\n";
+	cout << sourcesDest[2000000] << "\n";
+	cout << sourcesDest[3000000] << "\n";*/
 
 
 
 	//DESTINATION LOCATION INFO
 	/*int counter = 0;
-	for (int i=0; i <= PhoneLoad.Len(); i++) 
+	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
-		if (PhoneLoad[i].getLocDest() == 1 && PhoneLoad[i].getDuration() > 1)
+		if (strncmp (PhoneLoad[i].getLocSrc().CStr(), "", 1) != 0 && PhoneLoad[i].getDuration() > 1)
 		{
 			counter++;
 		}
 	}	
-	cout << counter << "\n";*/
+	cout << counter << "\n";
+	cout << PhoneLoad.Len() << "\n";*/
+
 }
 
 

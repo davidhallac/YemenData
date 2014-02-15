@@ -8,7 +8,7 @@ private:
 	TUInt64 source;
 	TUInt64 dest;
 	TStr locsrc;
-	TInt locdest;
+	TStr locdest;
 	TInt duration;
 	TInt starttime;
 
@@ -17,7 +17,7 @@ public:
 		source = 0;
 		dest = 0;
 		locsrc = "";
-		locdest = 0;
+		locdest = "";
 		duration = 0;
 		starttime = 0;
 	}
@@ -43,7 +43,7 @@ public:
 	 	starttime.Save(SOut);  
 	}
 
-	 void setVals(TUInt64 src, TUInt64 dst, TStr lsrc, TInt ldest, TInt dur, TInt sttime)
+	 void setVals(TUInt64 src, TUInt64 dst, TStr lsrc, TStr ldest, TInt dur, TInt sttime)
 	{
 		source = src;
 		dest = dst;
@@ -51,6 +51,16 @@ public:
 		locdest = ldest;
 		duration = dur;
 		starttime = sttime;
+	}
+
+	void setLocSrc(TStr lsrc)
+	{
+		locsrc = lsrc;
+	}
+
+	void setLocDest(TStr ldest)
+	{
+		locdest = ldest;
 	}
 
 	TUInt64 getSource()
@@ -68,7 +78,7 @@ public:
 		return locsrc;
 	}
 
-	TInt getLocDest()
+	TStr getLocDest()
 	{
 		return locdest;
 	}
