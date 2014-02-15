@@ -56,7 +56,7 @@ int main(int argc, const char * argv[])
 	
 
 	//START TIME
-	/*int total = PhoneLoad.Len();
+	int total = PhoneLoad.Len();
 	int counter = 0;
 	int thresholds [] = {10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000, 150000, 160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000,240000};
 	float percentages [24];
@@ -100,7 +100,7 @@ int main(int argc, const char * argv[])
 		fileout << ",";
 		fileout << marginals[j];
 	}
-	fileout << "\n";*/
+	fileout << "\n";
 
 
 
@@ -173,7 +173,7 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	int counter1 = 0;
+	/*int counter1 = 0;
 	int counter2 = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
@@ -201,7 +201,7 @@ int main(int argc, const char * argv[])
 	fileout << counter2;
 	fileout << ",";
 	fileout << PhoneLoad.Len();
-	fileout << "\n";
+	fileout << "\n";*/
 
 
 
