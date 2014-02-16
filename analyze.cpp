@@ -124,14 +124,7 @@ int main(int argc, const char * argv[])
 
 
 	}
-	cout << counter << "\n";
-	cout << sources[1] << "\n";
-	cout << sources[500000] << "\n";
-	cout << sources[1000000] << "\n";
-	cout << sources[2000000] << "\n";
-	cout << sources[3000000] << "\n";
-	cout << sources[4000000] << "\n";
-	cout << sources[5000000] << "\n";*/
+	cout << counter << "\n";*/
 
 
 
@@ -163,12 +156,7 @@ int main(int argc, const char * argv[])
 			counter++;
 
 	}
-	cout << counter << "\n";
-	cout << sourcesDest[1] << "\n";
-	cout << sourcesDest[500000] << "\n";
-	cout << sourcesDest[1000000] << "\n";
-	cout << sourcesDest[2000000] << "\n";
-	cout << sourcesDest[3000000] << "\n";*/
+	cout << counter << "\n";*/
 
 
 
@@ -220,7 +208,7 @@ int main(int argc, const char * argv[])
 
 
 	//GENERAL TABLE STATISTICS
-	int total = PhoneLoad.Len();
+	/*int total = PhoneLoad.Len();
 	int counterPhone = 0;
 	int counterText = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
@@ -364,9 +352,48 @@ int main(int argc, const char * argv[])
 	fileout << counterPhone;
 	fileout << ",";
 	fileout << counterText;
+	fileout << "\n";*/
+
+
+
+
+
+
+
+
+	//START TIMES MAY 24th 2010
+	int total = PhoneLoad.Len();
+	int thresholds [] = {0, 1500, 3000, 4500, 10000, 11500, 13000, 14500, 20000, 21500, 23000, 24500, 30000, 31500, 33000, 34500, 40000, 41500, 43000, 44500, 50000, 51500, 53000, 54500, 60000, 61500, 63000, 64500, 70000, 71500, 73000, 74500, 80000, 81500, 83000, 84500, 90000, 91500, 93000, 94500, 100000, 101500, 103000, 104500, 110000, 111500, 113000, 114500, 120000, 121500, 123000, 124500, 130000, 131500, 133000, 134500, 140000, 141500, 143000, 144500, 150000, 151500, 153000, 154500, 160000, 161500, 163000, 164500, 170000, 171500, 173000, 174500, 180000, 181500, 183000, 184500, 190000, 191500, 193000, 194500, 200000, 201500, 203000, 204500, 210000, 211500, 213000, 214500, 220000, 221500, 223000, 224500, 230000, 231500, 233000, 234500, 240000};
+	uint totals [96] = {0};
+	
+	for (int i=0; i <= PhoneLoad.Len(); i++) 
+	{
+		for(int j=0; j < (sizeof(thresholds)/sizeof(int)); j++)
+		{
+			if (PhoneLoad[i].getTime() >= thresholds[j] && PhoneLoad[i].getTime() < thresholds[j+1])
+			{
+				totals[j] = totals[j] + 1;
+				break;
+			}
+		}
+	}
+
+	char subbuff[9];
+	memcpy( subbuff, &(argv[1])[13], 8 );
+	subbuff[8] = '\0';
+	cout << subbuff << "\n";
+	//Write marginals to file (append)
+	ofstream fileout;
+	fileout.open("startTimes.csv", ios::app);
+	fileout << subbuff;
+	fileout << ",";
+	fileout << total;
+	for (int j = 0; j < 96; j++)
+	{
+		fileout << ",";
+		fileout << totals[j];
+	}
 	fileout << "\n";
-
-
 
 
 
