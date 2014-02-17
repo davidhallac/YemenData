@@ -464,7 +464,6 @@ int main(int argc, const char * argv[])
 		}
 	}	
 	sourcesList.Sort(true);
-	cout << sourcesList.Len() << "\n";
 
 	int counter = 1; //First element is always unique
 	for (int i = 1; i<= sourcesList.Len(); i++)
