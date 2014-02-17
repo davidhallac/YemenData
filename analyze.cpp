@@ -28,7 +28,9 @@ int main(int argc, const char * argv[])
 	TVec<TPhoneCall> PhoneLoad;
 	//TFIn fin("20100501"); 
 	TFIn fin(argv[1]);
+	cout << "Loading";
 	PhoneLoad.Load(fin);
+	cout << "Loaded";
 
 
 	//DURATION

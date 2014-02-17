@@ -30,9 +30,6 @@ int main(int argc, const char * argv[])
 	TSsParser Ss(argv[1], ssfCommaSep);
 	TInt counter = 0;
 
-	//Hash Table
-	THash<TUInt64, TPhoneCall> repeatCalls;
-
 	Ss.Next();
 	while(!Ss.Eof())
 	{
@@ -42,6 +39,9 @@ int main(int argc, const char * argv[])
 		
 		while( !Ss.Eof() && ((TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt())) == day)
 		{
+			//Hash Table
+			THash<TUInt64, TPhoneCall> repeatCalls;
+
 			//To see how fast the code is running
 			counter = counter + 1;
 			if (counter % 1000000 == 1)
@@ -132,10 +132,10 @@ int main(int argc, const char * argv[])
 			if(!badcall)
 			{
 				//Hash Table:
-				if(repeatCalls.IsKey(src))	
+				if(repeatCalls.IsKey(dest))	
 				{
 					//Check if most recent call was same one
-					if(abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
+					if(abs(repeatCalls.GetDat(dest).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(dest).getTime() - starttime) < 5 && repeatCalls.GetDat(dest).getDest() == src)
 					{
 						badcall = 1;
 						//cout << counter << "\n";
