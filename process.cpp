@@ -135,11 +135,11 @@ int main(int argc, const char * argv[])
 				if(repeatCalls.IsKey(src))	
 				{
 					//Check if most recent call was same one
-					if(abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
+					if(PhoneV.Len() > 0 && abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
 					{
 						badcall = 1;
 						//cout << counter << "\n";
-						if(Ss.GetInt(8) == 1 && PhoneV.Len() > 0)
+						if(Ss.GetInt(8) == 1)
 						{
 							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
 							{
@@ -166,7 +166,7 @@ int main(int argc, const char * argv[])
 								//	cout << "Missed element #" << counter << "\n";
 							}			
 						}
-						else if(PhoneV.Len() > 0)
+						else
 						{
 							//Need to fill in LocDest
 							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
