@@ -30,6 +30,9 @@ int main(int argc, const char * argv[])
 	TSsParser Ss(argv[1], ssfCommaSep);
 	TInt counter = 0;
 
+	//Hash Table
+	THash<TUInt64, TPhoneCall> repeatCalls;
+
 	Ss.Next();
 	while(!Ss.Eof())
 	{
@@ -39,8 +42,6 @@ int main(int argc, const char * argv[])
 		
 		while( !Ss.Eof() && ((TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt())) == day)
 		{
-			//Hash Table
-			THash<TUInt64, TPhoneCall> repeatCalls;
 			//To see how fast the code is running
 			counter = counter + 1;
 			if (counter % 1000000 == 1)
@@ -138,7 +139,7 @@ int main(int argc, const char * argv[])
 					{
 						badcall = 1;
 						//cout << counter << "\n";
-						if(Ss.GetInt(8) == 1)
+						if(Ss.GetInt(8) == 1 && PhoneV.Len() > 0)
 						{
 							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
 							{
@@ -165,7 +166,7 @@ int main(int argc, const char * argv[])
 								//	cout << "Missed element #" << counter << "\n";
 							}			
 						}
-						else
+						else if(PhoneV.Len() > 0)
 						{
 							//Need to fill in LocDest
 							if(PhoneV.Last().getSource() == src && PhoneV.Last().getDest() == dest)
