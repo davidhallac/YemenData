@@ -406,43 +406,10 @@ int main(int argc, const char * argv[])
 
 
 
-	//ENTIRE 3-YEAR DATASET - Calls/Texts, plus unique users
-	/*int total = PhoneLoad.Len();
-	int counterPhone = 0;
-	int counterText = 0;	
-	TVec<TUInt64> sourcesList(2*total, 0);
-	for (int i=0; i < PhoneLoad.Len(); i++) 
-	{
-		sourcesList.Add(PhoneLoad[i].getDest());
-		sourcesList.Add(PhoneLoad[i].getSource());
-
-		if (PhoneLoad[i].getDuration() > 1)
-		{
-			counterPhone++;
-		}
-		else if(PhoneLoad[i].getDuration() == 1)
-		{
-			counterText++;
-		}
-	}	
-	sourcesList.Sort(true);
-	cout << sourcesList.Len() << "\n";
-
-	//Count number of unique elements
-	int counter = 0; //First element is always unique
-	for (int i = 1; i<= sourcesList.Len(); i++)
-	{
-		if(sourcesList[i] != sourcesList[i-1])
-			counter++;
-
-	}
-	cout << counter << " unique\n";*/
-
-
 
 
 	//UNIQUE USERS AT ONE TOWER
-	int total = PhoneLoad.Len();	
+	/*int total = PhoneLoad.Len();	
 	TVec<TUInt64> sourcesList(2*total, 0);
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
@@ -466,8 +433,73 @@ int main(int argc, const char * argv[])
 			counter++;
 
 	}
-	cout << counter << " unique\n";
+	cout << counter << " unique\n";*/
 
+
+
+
+
+
+
+
+
+
+	//ENTIRE 3-YEAR DATASET - Calls/Texts, plus unique users
+	int total = PhoneLoad.Len();
+	int counterPhone = 0;
+	int counterText = 0;	
+	TVec<TUInt64> sourcesList(2*total, 0);
+	for (int i=0; i < PhoneLoad.Len(); i++) 
+	{
+		sourcesList.Add(PhoneLoad[i].getDest());
+		sourcesList.Add(PhoneLoad[i].getSource());
+
+		if (PhoneLoad[i].getDuration() > 1)
+		{
+			counterPhone++;
+		}
+		else if(PhoneLoad[i].getDuration() == 1)
+		{
+			counterText++;
+		}
+	}	
+	sourcesList.Sort(true);
+	cout << sourcesList.Len() << "\n";
+
+	int counter = 1; //First element is always unique
+	for (int i = 1; i<= sourcesList.Len(); i++)
+	{
+		if(sourcesList[i] != sourcesList[i-1])
+			counter++;
+	}
+
+	char subbuff[9];
+	memcpy( subbuff, &(argv[1])[13], 8 );
+	subbuff[8] = '\0';
+	cout << subbuff << "\n";
+	//Write to file (append)
+	ofstream fileout;
+	fileout.open("startTimes.csv", ios::app);
+	fileout << subbuff;
+	fileout << ",";
+	fileout << PhoneLoad.Len();
+	fileout << ",";
+	fileout << counterPhone;
+	fileout << ",";
+	fileout << counterText;
+	fileout << ",";
+	fileout << counter;
+	fileout << "\n";
+
+
+
+
+	//TGNUPlot Practice:
+	/*TVec<TInt> intTest;
+	TGnuPlot GP("Plots/plottest", "", true);
+	GP.SetXYLabel("Fraction of observed data (P)", "Number of connected components");
+	GP.AddPlot(intTest, intTest, "Influence cascade", "lw 2",true, false, false, false, false, false);
+	GP.SavePng();*/
 
 }
 
