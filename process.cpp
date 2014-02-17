@@ -41,7 +41,6 @@ int main(int argc, const char * argv[])
 		{
 			//Hash Table
 			THash<TUInt64, TPhoneCall> repeatCalls;
-
 			//To see how fast the code is running
 			counter = counter + 1;
 			if (counter % 1000000 == 1)
@@ -132,10 +131,10 @@ int main(int argc, const char * argv[])
 			if(!badcall)
 			{
 				//Hash Table:
-				if(repeatCalls.IsKey(dest))	
+				if(repeatCalls.IsKey(src))	
 				{
 					//Check if most recent call was same one
-					if(abs(repeatCalls.GetDat(dest).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(dest).getTime() - starttime) < 5 && repeatCalls.GetDat(dest).getDest() == src)
+					if(abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
 					{
 						badcall = 1;
 						//cout << counter << "\n";
