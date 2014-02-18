@@ -160,7 +160,7 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	int counter1 = 0;
+	/*int counter1 = 0;
 	int counter2 = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
@@ -187,7 +187,7 @@ int main(int argc, const char * argv[])
 	fileout << counter2;
 	fileout << ",";
 	fileout << PhoneLoad.Len();
-	fileout << "\n";
+	fileout << "\n";*/
 
 
 
@@ -447,7 +447,7 @@ int main(int argc, const char * argv[])
 
 
 	//ENTIRE 3-YEAR DATASET - Calls/Texts, plus unique users
-	/*int total = PhoneLoad.Len();
+	int total = PhoneLoad.Len();
 	int counterPhone = 0;
 	int counterText = 0;	
 	TVec<TUInt64> sourcesList(2*total, 0);
@@ -490,7 +490,7 @@ int main(int argc, const char * argv[])
 	fileout << counterText;
 	fileout << ",";
 	fileout << counter;
-	fileout << "\n";*/
+	fileout << "\n";
 
 
 
