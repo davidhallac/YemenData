@@ -367,18 +367,21 @@ int main(int argc, const char * argv[])
 	
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
-		//Tower 1, both directions
-		//if (strncmp (PhoneLoad[i].getLocDest().CStr(), "4210275302948", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "4210275302949", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "421027530294A", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A0282948", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A0282949", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A028294A", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "4210275302948", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "4210275302949", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "421027530294A", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A0282948", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A0282949", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A028294A", 13) == 0)
-		//Tower 2, both directions
-		if (strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028CF", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D0", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D1", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D2", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828CF", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D0", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D1", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D2", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028CF", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D0", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D1", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D2", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828CF", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D0", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D1", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D2", 13) == 0)
+		if(PhoneLoad[i].getDuration() == 1)
 		{
-			counter++;
-			for(int j=0; j < (sizeof(thresholds)/sizeof(int)); j++)
+			//Tower 1, both directions
+			if (strncmp (PhoneLoad[i].getLocDest().CStr(), "4210275302948", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "4210275302949", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "421027530294A", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A0282948", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A0282949", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A028294A", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "4210275302948", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "4210275302949", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "421027530294A", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A0282948", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A0282949", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A028294A", 13) == 0)
+			//Tower 2, both directions
+			//if (strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028CF", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D0", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D1", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102753028D2", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828CF", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D0", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D1", 13) == 0 || strncmp (PhoneLoad[i].getLocSrc().CStr(), "42102A02828D2", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028CF", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D0", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D1", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102753028D2", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828CF", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D0", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D1", 13) == 0 || strncmp (PhoneLoad[i].getLocDest().CStr(), "42102A02828D2", 13) == 0)
 			{
-				if (PhoneLoad[i].getTime() >= thresholds[j] && PhoneLoad[i].getTime() < thresholds[j+1])
+				counter++;
+				for(int j=0; j < (sizeof(thresholds)/sizeof(int)); j++)
 				{
-					totals[j] = totals[j] + 1;
-					break;
+					if (PhoneLoad[i].getTime() >= thresholds[j] && PhoneLoad[i].getTime() < thresholds[j+1])
+					{
+						totals[j] = totals[j] + 1;
+						break;
+					}
 				}
 			}
 		}

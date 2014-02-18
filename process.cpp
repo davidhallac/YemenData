@@ -58,7 +58,10 @@ int main(int argc, const char * argv[])
 			if(Ss.GetInt(8) == 1)
 			{
 				//Source ID
-				src = (TStr(Ss.GetFld(0))).GetUInt64();
+				if(Ss.IsInt(0))
+					src = (TStr(Ss.GetFld(0))).GetUInt64();
+				else
+					badcall = 1;
 
 				//Destination ID
 				if(Ss.IsInt(5))
@@ -104,7 +107,10 @@ int main(int argc, const char * argv[])
 					badcall = 1;
 				}
 
-				dest = (TStr(Ss.GetFld(0))).GetUInt64();
+				if(Ss.IsInt(0))
+					dest = (TStr(Ss.GetFld(0))).GetUInt64();
+				else
+					badcall = 1;
 
 				locsrc = "";
 
@@ -215,7 +221,8 @@ int main(int argc, const char * argv[])
 		}
 		cout << day << " " << (TStr(Ss.GetFld(9)).GetSubStr(0,7).GetInt()) << ", " << PhoneV.Len() << "\n";
 		TFOut fout(argv[2] + day.GetStr());
-		PhoneV.Save(fout);
+		if(PhoneV.Len() > 100)
+			PhoneV.Save(fout);
 
 	}
 
