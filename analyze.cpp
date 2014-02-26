@@ -156,8 +156,8 @@ int main(int argc, const char * argv[])
 
 
 
-	//DESTINATION LOCATION INFO
-	int counter1 = 0;
+	//NUMBER OF CALLS WITH BOTH LOC_SRC AND LOC_DEST
+	/*int counter1 = 0;
 	int counter2 = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
@@ -184,7 +184,7 @@ int main(int argc, const char * argv[])
 	fileout << counter2;
 	fileout << ",";
 	fileout << PhoneLoad.Len();
-	fileout << "\n";
+	fileout << "\n";*/
 
 
 
@@ -494,7 +494,7 @@ int main(int argc, const char * argv[])
 
 
 	//LOOK AT BEGINNING OF MONTH CALLS - REPEAT??
-	/*TVec<TPhoneCall> PhoneLoad2;
+	TVec<TPhoneCall> PhoneLoad2;
 	TFIn fin2("20100430");
 	PhoneLoad2.Load(fin2);
 	for (int i=PhoneLoad.Len() - 1; i >= 0; i--) 
@@ -511,7 +511,7 @@ int main(int argc, const char * argv[])
 
 		}
 
-	}*/
+	}
 
 
 
