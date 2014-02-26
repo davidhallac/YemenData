@@ -3,7 +3,6 @@
 //  YemenData
 //
 //  Created by David Hallac on 1/28/14.
-//  Copyright (c) 2014 David Hallac. All rights reserved.
 //
 
 
@@ -26,14 +25,12 @@ int main(int argc, const char * argv[])
 	}
 
 	TVec<TPhoneCall> PhoneLoad;
-	//TFIn fin("20100501"); 
 	TFIn fin(argv[1]);
 	PhoneLoad.Load(fin);
 
 	//DURATION
 
-	/*int total = 6610258; //Total number of non-texts on 
-	//int total = PhoneLoad.Len();
+	/* int total = PhoneLoad.Len();
 	int counter = 0;
 	int thresholds [] = {1780, 1799, 1800, 1801,3500,3599,3601};
 
@@ -447,7 +444,7 @@ int main(int argc, const char * argv[])
 
 
 	//ENTIRE 3-YEAR DATASET - Calls/Texts, plus unique users
-	int total = PhoneLoad.Len();
+	/*int total = PhoneLoad.Len();
 	int counterPhone = 0;
 	int counterText = 0;	
 	TVec<TUInt64> sourcesList(2*total, 0);
@@ -490,9 +487,31 @@ int main(int argc, const char * argv[])
 	fileout << counterText;
 	fileout << ",";
 	fileout << counter;
-	fileout << "\n";
+	fileout << "\n";*/
 
 
+
+
+
+	//LOOK AT BEGINNING OF MONTH CALLS - REPEAT??
+	/*TVec<TPhoneCall> PhoneLoad2;
+	TFIn fin2("20100430");
+	PhoneLoad2.Load(fin2);
+	for (int i=PhoneLoad.Len() - 1; i >= 0; i--) 
+	{
+		if(PhoneLoad[i].getSrc() == ___ && PhoneLoad[i].getDest() == ____)
+		{
+			if(abs(PhoneLoad[i].getTime() - _____) < 10)
+			{
+				if(abs(PhoneLoad[i].getDuration() - _____) < 10)
+				{
+					cout << "Found repeat phone call at line" << i << "\n";
+				}
+			}
+
+		}
+
+	}*/
 
 
 	//TGNUPlot Practice:
