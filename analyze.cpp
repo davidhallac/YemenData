@@ -157,7 +157,7 @@ int main(int argc, const char * argv[])
 
 
 	//DESTINATION LOCATION INFO
-	/*int counter1 = 0;
+	int counter1 = 0;
 	int counter2 = 0;
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
@@ -184,7 +184,7 @@ int main(int argc, const char * argv[])
 	fileout << counter2;
 	fileout << ",";
 	fileout << PhoneLoad.Len();
-	fileout << "\n";*/
+	fileout << "\n";
 
 
 
@@ -514,12 +514,8 @@ int main(int argc, const char * argv[])
 	}*/
 
 
-	//TGNUPlot Practice:
-	/*TVec<TInt> intTest;
-	TGnuPlot GP("Plots/plottest", "", true);
-	GP.SetXYLabel("Fraction of observed data (P)", "Number of connected components");
-	GP.AddPlot(intTest, intTest, "Influence cascade", "lw 2",true, false, false, false, false, false);
-	GP.SavePng();*/
+
+
 
 }
 
