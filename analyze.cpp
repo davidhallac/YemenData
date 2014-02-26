@@ -495,7 +495,7 @@ int main(int argc, const char * argv[])
 
 	//LOOK AT BEGINNING OF MONTH CALLS - REPEAT??
 	TVec<TPhoneCall> PhoneLoad2;
-	TFIn fin2("data/20100430");
+	TFIn fin2("data/May2010/20100430");
 	PhoneLoad2.Load(fin2);
 	for (int i=PhoneLoad.Len() - 1; i >= 0; i--) 
 	{
