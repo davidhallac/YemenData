@@ -145,18 +145,7 @@ int main(int argc, const char * argv[])
 					//Check if the call in the hash table was the reciprocal call
 					if(PhoneV.Len() > 0 && abs(repeatCalls.GetDat(src).getDuration() - duration) < 5 && abs(repeatCalls.GetDat(src).getTime() - starttime) < 5 && repeatCalls.GetDat(src).getDest() == dest)
 					{
-						//TODO: Test this shortcut out
-						badcall = 1;
-						if(Ss.GetInt(8) == 1)
-						{
-							repeatCalls.GetDat(src).setLocSrc(locsrc);
-						}
-						else
-						{
-							repeatCalls.GetDat(src).setLocDest(locdest);
-						}
-						
-						/*
+		
 						//It is a repeat. Don't add to vector, simply update src/dest location
 						badcall = 1; 
 						if(Ss.GetInt(8) == 1)
@@ -210,7 +199,7 @@ int main(int argc, const char * argv[])
 									elements--;
 								}
 							}
-						}*/
+						}
 					}
 					else
 						//Otherwise, simply add this call to the list of previous calls
