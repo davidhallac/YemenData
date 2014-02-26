@@ -501,7 +501,7 @@ int main(int argc, const char * argv[])
 	{
 		if(PhoneLoad[i].getSource() == 967735259323 && PhoneLoad[i].getDest() == 967736887375)
 		{
-			cout << i << "\n";
+			cout << i << ", " << PhoneLoad[i].getTime() << "\n";
 			if(abs(PhoneLoad[i].getTime() - 233923) < 10)
 			{
 				if(abs(PhoneLoad[i].getDuration() - 1800) < 10)
