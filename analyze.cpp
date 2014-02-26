@@ -499,11 +499,12 @@ int main(int argc, const char * argv[])
 	PhoneLoad2.Load(fin2);
 	for (int i=PhoneLoad.Len() - 1; i >= 0; i--) 
 	{
-		if(PhoneLoad[i].getSrc() == ___ && PhoneLoad[i].getDest() == ____)
+		if(PhoneLoad[i].getSource() == 967735259323 && PhoneLoad[i].getDest() == 967736887375)
 		{
-			if(abs(PhoneLoad[i].getTime() - _____) < 10)
+			cout << i << "\n";
+			if(abs(PhoneLoad[i].getTime() - 233923) < 10)
 			{
-				if(abs(PhoneLoad[i].getDuration() - _____) < 10)
+				if(abs(PhoneLoad[i].getDuration() - 1800) < 10)
 				{
 					cout << "Found repeat phone call at line" << i << "\n";
 				}
