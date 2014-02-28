@@ -499,17 +499,29 @@ int main(int argc, const char * argv[])
 
 	//INTERNATIONAL STATISTICS
 	int total = PhoneLoad.Len();
-	int counter = 0;
-	int counterSaudi = 0;	
+	int counterIn = 0;
+	int counterOut = 0;	
+	int counterSaudi = 0;
 	for (int i=0; i < total; i++) 
 	{
 		if (PhoneLoad[i].getDuration() > 1)
 		{
 			//1) Incoming International Calls
 			TUInt64 temp = PhoneLoad[i].getSource();
-			//2) Outgoing International Calls
-			//TUInt64 temp = PhoneLoad[i].getDest();
+/*			if(temp / 1000000000 >= 1 && temp / 1000000000 <= 999 && temp / 1000000000 != 967)
+			{
+				int countryCode = 0;
+				if(temp / 1000000000 <= 9)
+					countryCode = temp / 10000000;
+				else if(temp / 1000000000 <= 99)
+					countryCode = temp / 100000000;
+				else
+					countryCode = temp / 1000000000;
+				counterIn++;
+			}*/
 
+			//2) Outgoing International Calls
+			temp = PhoneLoad[i].getDest();
 			if(temp / 1000000000 >= 1 && temp / 1000000000 <= 999 && temp / 1000000000 != 967)
 			{
 				int countryCode = 0;
@@ -519,15 +531,15 @@ int main(int argc, const char * argv[])
 					countryCode = temp / 100000000;
 				else
 					countryCode = temp / 1000000000;
-				//cout << countryCode << "\n";
-				counter++;
-				if(countryCode == 966)
+				counterOut++;
+				if(countryCode >= 967)
 					counterSaudi++;
 			}
 		}
 	}
+	cout << counterIn << "\n";
 	cout << counterSaudi << "\n";
-	cout << counter << "\n";
+	cout << counterOut << "\n";
 
 }
 
