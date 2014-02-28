@@ -497,18 +497,17 @@ int main(int argc, const char * argv[])
 
 
 
-	//INTERNATIONAL STATISTICS
+	//INTERNATIONAL CALL STATISTICS
 	int total = PhoneLoad.Len();
 	int counterIn = 0;
 	int counterOut = 0;	
-	int counterSaudi = 0;
 	for (int i=0; i < total; i++) 
 	{
 		if (PhoneLoad[i].getDuration() > 1)
 		{
 			//1) Incoming International Calls
 			TUInt64 temp = PhoneLoad[i].getSource();
-/*			if(temp / 1000000000 >= 1 && temp / 1000000000 <= 999 && temp / 1000000000 != 967)
+			if(temp / 1000000000 >= 1 && temp / 1000000000 <= 999 && temp / 1000000000 != 967)
 			{
 				int countryCode = 0;
 				if(temp / 1000000000 <= 9)
@@ -518,7 +517,7 @@ int main(int argc, const char * argv[])
 				else
 					countryCode = temp / 1000000000;
 				counterIn++;
-			}*/
+			}
 
 			//2) Outgoing International Calls
 			temp = PhoneLoad[i].getDest();
@@ -532,14 +531,24 @@ int main(int argc, const char * argv[])
 				else
 					countryCode = temp / 1000000000;
 				counterOut++;
-				if(countryCode >= 967)
-					counterSaudi++;
 			}
 		}
 	}
-	cout << counterIn << "\n";
-	cout << counterSaudi << "\n";
-	cout << counterOut << "\n";
+	char subbuff[9];
+	memcpy( subbuff, &(argv[1])[13], 8 );
+	subbuff[8] = '\0';
+	cout << subbuff << "\n";
+	//Write to file (append)
+	ofstream fileout;
+	fileout.open("startTimes.csv", ios::app);
+	fileout << subbuff;
+	fileout << ",";
+	fileout << PhoneLoad.Len();
+	fileout << ",";
+	fileout << counterIn;
+	fileout << ",";
+	fileout << counterOut;
+	fileout << "\n";
 
 }
 
