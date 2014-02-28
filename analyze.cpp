@@ -364,7 +364,8 @@ int main(int argc, const char * argv[])
 	
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
-		if(PhoneLoad[i].getDuration() == 1)
+		//Look at calls only
+		if(PhoneLoad[i].getDuration() >= 1)
 		{
 			//Uncomment the selection you want to analyze
 			//Tower 1, outgoing
