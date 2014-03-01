@@ -424,6 +424,7 @@ int main(int argc, const char * argv[])
 		//Average duration
 		for(int j = 0; j < totals[i].Len(); j++)
 		{
+			cout << i << ", " << j << ", " << totals[i][j].getTime() << "\n";
 			totalSum += totals[i][j].getDuration();
 		}
 		writeVal = totalSum / totals[i].Len();
