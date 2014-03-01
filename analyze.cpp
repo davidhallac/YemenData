@@ -422,10 +422,14 @@ int main(int argc, const char * argv[])
 		int totalSum = 0;
 		int writeVal = 0;
 		//Average duration
-		for(int j = 0; j < totals[i].Len(); j++)
+		if (totals[i].Len() > 0)
 		{
-			cout << i << ", " << j << ", " << totals[i][j].getTime() << "\n";
-			totalSum += totals[i][j].getDuration();
+			for(int j = 0; j < totals[i].Len(); j++)
+			{
+				cout << i << ", " << j << ", " << totals[i][j].getDuration() << "\n";
+				totalSum += totals[i][j].getDuration();
+
+			}
 		}
 		writeVal = totalSum / totals[i].Len();
 		//Average distance
