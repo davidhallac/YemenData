@@ -352,7 +352,8 @@ int main(int argc, const char * argv[])
 
 
 
-	//STATISTICS FOR SPECIFIC TOWER - fill in tower IDs, select call type
+	//STATISTICS FOR SPECIFIC TOWER - fill in tower IDs, 
+	//select call type, and choose what you want to print
 	int counter = 0;
 	int thresholds [] = {0, 1500, 3000, 4500, 10000, 11500, 13000, 14500, 20000, 21500, 23000, 24500, 30000, 31500, 33000, 34500, 40000, 41500, 43000, 44500, 50000, 51500, 53000, 54500, 60000, 61500, 63000, 64500, 70000, 71500, 73000, 74500, 80000, 81500, 83000, 84500, 90000, 91500, 93000, 94500, 100000, 101500, 103000, 104500, 110000, 111500, 113000, 114500, 120000, 121500, 123000, 124500, 130000, 131500, 133000, 134500, 140000, 141500, 143000, 144500, 150000, 151500, 153000, 154500, 160000, 161500, 163000, 164500, 170000, 171500, 173000, 174500, 180000, 181500, 183000, 184500, 190000, 191500, 193000, 194500, 200000, 201500, 203000, 204500, 210000, 211500, 213000, 214500, 220000, 221500, 223000, 224500, 230000, 231500, 233000, 234500, 240000};
 	TVec<TPhoneCall> totals [96];
@@ -418,16 +419,19 @@ int main(int argc, const char * argv[])
 	for (int i=0; i < 96; i++)
 	{
 		//WriteVal is what you write to file
+		int totalSum = 0;
 		int writeVal = 0;
-
 		//Average duration
-
-
+		for(int j = 0; j < totals[i].Len(); j++)
+		{
+			totalSum += totals[i][j].getDuration();
+		}
+		writeVal = totalSum / totals[i].Len();
 		//Average distance
 
 
-		//Number
-		writeVal = totals[i].Len();
+		//Number of calls
+		//writeVal = totals[i].Len();
 
 		fileout << ",";
 		fileout << writeVal;
