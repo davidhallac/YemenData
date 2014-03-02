@@ -353,7 +353,7 @@ int main(int argc, const char * argv[])
 
 
 	//STATISTICS FOR SPECIFIC TOWER - 3 things to select:
-	//tower IDs, call type, and what you want to print to csv
+	//tower IDs, call type to look at, and what you want to print to csv
 	int counter = 0;
 	int thresholds [] = {0, 1500, 3000, 4500, 10000, 11500, 13000, 14500, 20000, 21500, 23000, 24500, 30000, 31500, 33000, 34500, 40000, 41500, 43000, 44500, 50000, 51500, 53000, 54500, 60000, 61500, 63000, 64500, 70000, 71500, 73000, 74500, 80000, 81500, 83000, 84500, 90000, 91500, 93000, 94500, 100000, 101500, 103000, 104500, 110000, 111500, 113000, 114500, 120000, 121500, 123000, 124500, 130000, 131500, 133000, 134500, 140000, 141500, 143000, 144500, 150000, 151500, 153000, 154500, 160000, 161500, 163000, 164500, 170000, 171500, 173000, 174500, 180000, 181500, 183000, 184500, 190000, 191500, 193000, 194500, 200000, 201500, 203000, 204500, 210000, 211500, 213000, 214500, 220000, 221500, 223000, 224500, 230000, 231500, 233000, 234500, 240000};
 	TVec<TPhoneCall> totals [96];
@@ -380,11 +380,11 @@ int main(int argc, const char * argv[])
 			{
 				//UNCOMMENT THE OPTION YOU WANT
 				//1) Outgoing calls
-				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
+				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//2) Incoming
 				//if(strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//3) Either
-				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
+				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//4) Both (call stays within tower)
 				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 && strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				{
@@ -430,7 +430,7 @@ int main(int argc, const char * argv[])
 		{
 			for(int j = 0; j < totals[i].Len(); j++)
 			{
-				if(totals[i][j].getDuration() < 1799)
+				if(totals[i][j].getDuration() < 1799 || totals[i][j].getDuration() > 1801)
 				{
 					totalSum += totals[i][j].getDuration();
 					counterSum++;	
