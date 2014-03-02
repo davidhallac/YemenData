@@ -380,13 +380,13 @@ int main(int argc, const char * argv[])
 			{
 				//UNCOMMENT THE OPTION YOU WANT
 				//1) Outgoing calls
-				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
+				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//2) Incoming
-				//if(strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j], 13) == 0)
+				//if(strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//3) Either
-				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j], 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j], 13) == 0)
+				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//4) Both (call stays within tower)
-				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j], 13) == 0 && strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j], 13) == 0)
+				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 && strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				{
 					meetsCondition = 1;
 					break;
