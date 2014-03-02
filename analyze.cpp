@@ -366,13 +366,18 @@ int main(int argc, const char * argv[])
 
 			//FILL IN TOWER IDS WITH TOWERS TO ANALYZE
 			TVec<TStr> towerIDs;
-			towerIDs.Add("4210275302948");
+			//MAY 24th 2010
+			/*towerIDs.Add("4210275302948");
 			towerIDs.Add("4210275302949");
 			towerIDs.Add("421027530294A");
 			towerIDs.Add("42102A0282948");
 			towerIDs.Add("42102A0282949");
-			towerIDs.Add("42102A028294A");
+			towerIDs.Add("42102A028294A");*/
 
+			//SEPTEMBER 30, 2011 (Al-Awlaki)
+			towerIDs.Add("42102753028D3");
+			towerIDs.Add("42102753028D4");
+			towerIDs.Add("42102753028D8");
 
 
 			int meetsCondition = 0;
@@ -380,11 +385,11 @@ int main(int argc, const char * argv[])
 			{
 				//UNCOMMENT THE OPTION YOU WANT
 				//1) Outgoing calls
-				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
+				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//2) Incoming
 				//if(strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//3) Either
-				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
+				if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 || strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				//4) Both (call stays within tower)
 				//if(strncmp(PhoneLoad[i].getLocSrc().CStr(), towerIDs[j].CStr(), 13) == 0 && strncmp(PhoneLoad[i].getLocDest().CStr(), towerIDs[j].CStr(), 13) == 0)
 				{
@@ -424,7 +429,7 @@ int main(int argc, const char * argv[])
 
 		//UNCOMMENT THE SELECTION YOU WANT
 		//Average duration
-		int totalSum = 0;
+		/*int totalSum = 0;
 		int counterSum = 0;
 		if (totals[i].Len() > 0)
 		{
@@ -439,12 +444,14 @@ int main(int argc, const char * argv[])
 			}
 		}
 		if(counterSum != 0)
-			writeVal = totalSum / counterSum;
+			writeVal = totalSum / counterSum;*/
+		
+
 		//Average distance
 
 
 		//Number of calls
-		//writeVal = totals[i].Len();
+		writeVal = totals[i].Len();
 
 		fileout << ",";
 		fileout << writeVal;
