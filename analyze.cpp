@@ -398,14 +398,21 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("421023E80EA8D"); //End of tower 2
 			towerIDs.Add("421021F40C9A0");//Start tower 3
 			towerIDs.Add("421021F40C9A1");
-			towerIDs.Add("421021F40C9A2");*///End of tower 3
+			towerIDs.Add("421021F40C9A2");//End of tower 3
 			towerIDs.Add("421021F404FDD");//Start tower 4 - Al-Kawd			
 			towerIDs.Add("421021F404FDE");
 			towerIDs.Add("421021F404FDF");
 			towerIDs.Add("421023E804FDD");
 			towerIDs.Add("421023E804FDE");
-			towerIDs.Add("421023E804FDF");
-			
+			towerIDs.Add("421023E804FDF");*/ 
+
+			//January 30, 2012 (Lawdar)
+			towerIDs.Add("42102000FC352");
+			towerIDs.Add("42102000FC353");
+			towerIDs.Add("42102000FC354");
+			towerIDs.Add("421024E20C352");
+			towerIDs.Add("421024E20C353");
+			towerIDs.Add("421024E20C354");		
 
 			int meetsCondition = 0;
 			for (int j=0; j < towerIDs.Len(); j++)
