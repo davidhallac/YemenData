@@ -35,20 +35,20 @@ done
 #./analyze data/Jun2010/20100615
 
 #Analyze Al-Alwaki Strike (9/30/2011)
-./analyze data/Sep2011/20100909
-./analyze data/Sep2011/20100916
-./analyze data/Sep2011/20100923
-./analyze data/Sep2011/20100930
-./analyze data/Oct2011/20101007
-./analyze data/Oct2011/20101014
-./analyze data/Oct2011/20101021
-./analyze data/Sep2011/20100910
-./analyze data/Sep2011/20100917
-./analyze data/Sep2011/20100924
-./analyze data/Oct2011/20101001
-./analyze data/Oct2011/20101008
-./analyze data/Oct2011/20101015
-./analyze data/Oct2011/20101022
+./analyze data/Sep2011/20110909
+./analyze data/Sep2011/20110916
+./analyze data/Sep2011/20110923
+./analyze data/Sep2011/20110930
+./analyze data/Oct2011/20111007
+./analyze data/Oct2011/20111014
+./analyze data/Oct2011/20111021
+./analyze data/Sep2011/20110910
+./analyze data/Sep2011/20110917
+./analyze data/Sep2011/20110924
+./analyze data/Oct2011/20111001
+./analyze data/Oct2011/20111008
+./analyze data/Oct2011/20111015
+./analyze data/Oct2011/20111022
 
 #Analyze Zinjibar Strike (6/3/2011)
 
