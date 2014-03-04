@@ -375,13 +375,27 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("42102A028294A");*/
 
 			//SEPTEMBER 30, 2011 (Al-Awlaki)
-			towerIDs.Add("42102753028D3");
+			/*towerIDs.Add("42102753028D3");
 			towerIDs.Add("42102753028D4");
 			towerIDs.Add("42102753028D8");
 			towerIDs.Add("421027530C595");
 			towerIDs.Add("421027530C596");
 			towerIDs.Add("421027530C597");
-			towerIDs.Add("421027530C598");
+			towerIDs.Add("421027530C598");*/
+
+			//June 3, 2011 (Zinjibar)
+			towerIDs.Add("421021F404E4C");
+			towerIDs.Add("421021F404E4D");
+			towerIDs.Add("421021F404E4E");
+			towerIDs.Add("421023E804E4C");
+			towerIDs.Add("421023E804E4D");
+			towerIDs.Add("421023E804E4E");//End of tower 1
+			towerIDs.Add("421021F40EA8B");//Start of tower 2
+			towerIDs.Add("421021F40EA8C");
+			towerIDs.Add("421021F40EA8D");
+			towerIDs.Add("421023E80EA8B");
+			towerIDs.Add("421023E80EA8C");
+			towerIDs.Add("421023E80EA8D");
 
 			int meetsCondition = 0;
 			for (int j=0; j < towerIDs.Len(); j++)
