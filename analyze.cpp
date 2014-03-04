@@ -384,7 +384,7 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("421027530C598");*/
 
 			//June 3, 2011 (Zinjibar)
-			towerIDs.Add("421021F404E4C");
+			/*towerIDs.Add("421021F404E4C");
 			towerIDs.Add("421021F404E4D");
 			towerIDs.Add("421021F404E4E");
 			towerIDs.Add("421023E804E4C");
@@ -396,10 +396,10 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("421023E80EA8B");
 			towerIDs.Add("421023E80EA8C");
 			towerIDs.Add("421023E80EA8D"); //End of tower 2
-			towerIDs.Add("421021F40C9A0");
+			towerIDs.Add("421021F40C9A0");//Start tower 3
 			towerIDs.Add("421021F40C9A1");
-			towerIDs.Add("421021F40C9A2");//End of tower 2
-			towerIDs.Add("421021F404FDD");			
+			towerIDs.Add("421021F40C9A2");*///End of tower 3
+			towerIDs.Add("421021F404FDD");//Start tower 4 - Al-Kawd			
 			towerIDs.Add("421021F404FDE");
 			towerIDs.Add("421021F404FDF");
 			towerIDs.Add("421023E804FDD");
