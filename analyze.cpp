@@ -398,7 +398,13 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("421023E80EA8D"); //End of tower 2
 			towerIDs.Add("421021F40C9A0");
 			towerIDs.Add("421021F40C9A1");
-			towerIDs.Add("421021F40C9A2");
+			towerIDs.Add("421021F40C9A2");//End of tower 2
+			towerIDs.Add("421021F404FDD");			
+			towerIDs.Add("421021F404FDE");
+			towerIDs.Add("421021F404FDF");
+			towerIDs.Add("421023E804FDD");
+			towerIDs.Add("421023E804FDE");
+			towerIDs.Add("421023E804FDF");
 			
 
 			int meetsCondition = 0;
