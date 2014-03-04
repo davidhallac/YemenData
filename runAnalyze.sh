@@ -26,7 +26,6 @@ done
 #./analyze data/May2010/20100531
 #./analyze data/Jun2010/20100607
 #./analyze data/Jun2010/20100614
-
 #./analyze data/May2010/20100504
 #./analyze data/May2010/20100511
 #./analyze data/May2010/20100518
@@ -36,18 +35,23 @@ done
 #./analyze data/Jun2010/20100615
 
 #Analyze Al-Alwaki Strike (9/30/2011)
-./analyze data/Sep2010/20100909
-./analyze data/Sep2010/20100916
-./analyze data/Sep2010/20100923
-./analyze data/Sep2010/20100930
-./analyze data/Oct2010/20101007
-./analyze data/Oct2010/20101014
-./analyze data/Oct2010/20101021
+./analyze data/Sep2011/20100909
+./analyze data/Sep2011/20100916
+./analyze data/Sep2011/20100923
+./analyze data/Sep2011/20100930
+./analyze data/Oct2011/20101007
+./analyze data/Oct2011/20101014
+./analyze data/Oct2011/20101021
+./analyze data/Sep2011/20100910
+./analyze data/Sep2011/20100917
+./analyze data/Sep2011/20100924
+./analyze data/Oct2011/20101001
+./analyze data/Oct2011/20101008
+./analyze data/Oct2011/20101015
+./analyze data/Oct2011/20101022
 
-./analyze data/Sep2010/20100910
-./analyze data/Sep2010/20100917
-./analyze data/Sep2010/20100924
-./analyze data/Oct2010/20101001
-./analyze data/Oct2010/20101008
-./analyze data/Oct2010/20101015
-./analyze data/Oct2010/20101022
+#Analyze Zinjibar Strike (6/3/2011)
+
+
+
+
