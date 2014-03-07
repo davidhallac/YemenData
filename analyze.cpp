@@ -456,14 +456,14 @@ int main(int argc, const char * argv[])
 	fileout << subbuff;
 	fileout << ",";
 	fileout << counter;
-	/*for (int i=0; i < 96; i++)
+	for (int i=0; i < 96; i++)
 	{
 		//WriteVal is what you write to file
 		int writeVal = 0;
 
 		//UNCOMMENT THE SELECTION YOU WANT
 		//Average duration
-		/*int totalSum = 0;
+		int totalSum = 0;
 		int counterSum = 0;
 		if (totals[i].Len() > 0)
 		{
@@ -478,7 +478,7 @@ int main(int argc, const char * argv[])
 			}
 		}
 		if(counterSum != 0)
-			writeVal = totalSum / counterSum;*/
+			writeVal = totalSum / counterSum;
 		
 
 		//Average distance
@@ -487,13 +487,13 @@ int main(int argc, const char * argv[])
 		//Number of calls
 		//writeVal = totals[i].Len();
 
-	/*	fileout << ",";
+		fileout << ",";
 		fileout << writeVal;
 	}
-	fileout << "\n";*/
+	fileout << "\n";
 
 	//Distance Distribution
-	for(int i = 92; i < 96; i++)
+	/*for(int i = 92; i < 96; i++)
 	{
 		for(int j = 0; j < totals[i].Len(); j++)
 		{
@@ -505,7 +505,7 @@ int main(int argc, const char * argv[])
 			}
 		}
 	}
-	fileout << "\n";
+	fileout << "\n";*/
 
 
 
