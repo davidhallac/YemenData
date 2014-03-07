@@ -361,7 +361,7 @@ int main(int argc, const char * argv[])
 	for (int i=0; i < PhoneLoad.Len(); i++) 
 	{
 		//Look at calls only
-		if(PhoneLoad[i].getDuration() >= 1)
+		if(PhoneLoad[i].getDuration() > 1)
 		{
 
 			//FILL IN TOWER IDS WITH TOWERS TO ANALYZE
