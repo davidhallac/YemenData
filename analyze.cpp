@@ -493,14 +493,16 @@ int main(int argc, const char * argv[])
 	fileout << "\n";*/
 
 	//Distance Distribution
-	int i = 92;
-	for(int j = 0; j < totals[i].Len(); j++)
+	for(int i = 92; i < 96; i++)
 	{
-		if(totals[i][j].getDuration() < 1799 || totals[i][j].getDuration() > 1801)
+		for(int j = 0; j < totals[i].Len(); j++)
 		{
-			int writeVal = totals[i][j].getDuration();
-			fileout << ",";
-			fileout << writeVal;
+			if(totals[i][j].getDuration() < 1799 || totals[i][j].getDuration() > 1801)
+			{
+				int writeVal = totals[i][j].getDuration();
+				fileout << ",";
+				fileout << writeVal;
+			}
 		}
 	}
 	fileout << "\n";
