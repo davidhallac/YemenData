@@ -367,12 +367,12 @@ int main(int argc, const char * argv[])
 			//FILL IN TOWER IDS WITH TOWERS TO ANALYZE
 			TVec<TStr> towerIDs;
 			//MAY 24th 2010
-			/*towerIDs.Add("4210275302948");
+			towerIDs.Add("4210275302948");
 			towerIDs.Add("4210275302949");
 			towerIDs.Add("421027530294A");
 			towerIDs.Add("42102A0282948");
 			towerIDs.Add("42102A0282949");
-			towerIDs.Add("42102A028294A");*/
+			towerIDs.Add("42102A028294A");
 
 			//SEPTEMBER 30, 2011 (Al-Awlaki)
 			/*towerIDs.Add("42102753028D3");
@@ -407,12 +407,12 @@ int main(int argc, const char * argv[])
 			towerIDs.Add("421023E804FDF");*/ 
 
 			//January 30, 2012 (Lawdar)
-			towerIDs.Add("42102000FC352");
+			/*towerIDs.Add("42102000FC352");
 			towerIDs.Add("42102000FC353");
 			towerIDs.Add("42102000FC354");
 			towerIDs.Add("421024E20C352");
 			towerIDs.Add("421024E20C353");
-			towerIDs.Add("421024E20C354");		
+			towerIDs.Add("421024E20C354");*/		
 
 			int meetsCondition = 0;
 			for (int j=0; j < towerIDs.Len(); j++)
@@ -456,7 +456,7 @@ int main(int argc, const char * argv[])
 	fileout << subbuff;
 	fileout << ",";
 	fileout << counter;
-	for (int i=0; i < 96; i++)
+	/*for (int i=0; i < 96; i++)
 	{
 		//WriteVal is what you write to file
 		int writeVal = 0;
@@ -485,14 +485,25 @@ int main(int argc, const char * argv[])
 
 
 		//Number of calls
-		writeVal = totals[i].Len();
+		//writeVal = totals[i].Len();
 
-		fileout << ",";
+	/*	fileout << ",";
 		fileout << writeVal;
 	}
+	fileout << "\n";*/
+
+	//Distance Distribution
+	int i = 92;
+	for(int j = 0; j < totals[i].Len(); j++)
+	{
+		if(totals[i][j].getDuration() < 1799 || totals[i][j].getDuration() > 1801)
+		{
+			int writeVal = totals[i][j].getDuration();
+			fileout << ",";
+			fileout << writeVal;
+		}
+	}
 	fileout << "\n";
-
-
 
 
 
