@@ -50,4 +50,4 @@ while read line
 do           
     ./analyze $line
     echo "./analyze $line"           
-done < /Users/Hallac/Documents/MATLAB/Stanford/Research/Jure/AllStrikes/StrikeTowers.csv
+done < StrikeData.csv
