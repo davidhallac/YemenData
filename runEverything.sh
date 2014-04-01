@@ -10,7 +10,8 @@
 make
 
 #Process each month
-years=(2010 2011 2012)
+#years=(2010 2011 2012)
+years=()
 for year in ${years[@]}
 do
 ./process ../../../ZipFiles/JANUARY_$year.zip data/Jan$year/
@@ -26,14 +27,10 @@ do
 ./process ../../../ZipFiles/NOVEMBER_$year.zip data/Nov$year/
 ./process ../../../ZipFiles/DECEMBER_$year.zip data/Dec$year/
 done
-
 #Don't forget Jan 2013
-./process ../../../ZipFiles/JANUARY_2013.zip data/Jan2013
-
-
+#./process ../../../ZipFiles/JANUARY_2013.zip data/Jan2013
 
 #Nested for loops, for each month, analyze each day
-
 #months=(Jan2010 Feb2010 Mar2010 Apr2010 May2010 Jun2010 Jul2010 Aug2010 Sep2010 Oct2010 Nov2010 Dec2010)
 months=()
 for month in ${months[@]}
@@ -47,3 +44,10 @@ do
 done
 done
 
+
+#Analyze each drone strike
+while read line           
+do           
+    ./analyze $line
+    echo "./analyze $line"           
+done < /Users/Hallac/Documents/MATLAB/Stanford/Research/Jure/AllStrikes/StrikeTowers.csv
