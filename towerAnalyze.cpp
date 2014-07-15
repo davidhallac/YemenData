@@ -120,15 +120,15 @@ int main(int argc, const char * argv[])
 
 
 	//Now, analyze TVecs, broken down by start time
-	char subbuff[9];
-	memcpy( subbuff, &(argv[1])[13], 8 );
-	subbuff[8] = '\0';
-	cout << subbuff << "\n";
-	ofstream fileout;
-	fileout.open("startTimes.csv", ios::app);
-	fileout << subbuff;
-	fileout << ",";
-	fileout << counter;
+	// char subbuff[9];
+	// memcpy( subbuff, &(argv[1])[13], 8 );
+	// subbuff[8] = '\0';
+	// cout << subbuff << "\n";
+	// ofstream fileout;
+	// fileout.open("startTimes.csv", ios::app);
+	// fileout << subbuff;
+	// fileout << ",";
+	// fileout << counter;
 	for (int i=0; i < 96; i++)
 	{
 		//WriteVal is what you write to file
@@ -160,10 +160,10 @@ int main(int argc, const char * argv[])
 		//Number of calls
 		writeVal = totals[i].Len();
 
-		fileout << ",";
-		fileout << writeVal;
+		// fileout << ",";
+		// fileout << writeVal;
 	}
-	fileout << "\n";
+	// fileout << "\n";
 
 	//Distance Distribution
 	/*for(int i = 92; i < 96; i++)
