@@ -37,8 +37,6 @@ int main(int argc, const char * argv[])
 		towerLoc.AddDat(Ss.GetFld(0), 100000*(-7*(Ss.GetFlt(1)-13) + 29*(Ss.GetFlt(2)-40)));
 	}
 
-	cout << "Build Hashmap" << "\n";
-
 	TPt <TNodeNet<TInt> > Net = TNodeNet<TInt>::New();
 
 	PUNGraph G = TUNGraph::New();
@@ -47,19 +45,18 @@ int main(int argc, const char * argv[])
 	TInt towerCount = 0;
 	while(!NI.IsEnd())
 	{
-
 		TFlt tow = NI.GetDat();
 		if(!G->IsNode(tow))
 		{
+			cout << "Adding node" << "\n";
 			G->AddNode(tow);
+			cout << "Successfully Added Node" << "\n";
 			towerNumber.AddDat(tow, towerCount);
 			towerCount++;
 		}
 		
 		NI.Next();
 	}
-
-	cout << "Successfully loaded data" << "\n";
 
 	int countt = 0;
 	for (TUNGraph::TNodeI NI = G->BegNI(); NI < G->EndNI(); NI++) 
