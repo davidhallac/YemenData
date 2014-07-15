@@ -48,7 +48,7 @@ int main(int argc, const char * argv[])
 		TFlt tow = NI.GetDat();
 		if(!G->IsNode(tow))
 		{
-			cout << "Adding node" << "\n";
+			cout << "Adding node: " << tow << "\n";
 			G->AddNode(tow);
 			cout << "Successfully Added Node" << "\n";
 			towerNumber.AddDat(tow, towerCount);
