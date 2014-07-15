@@ -28,6 +28,8 @@ int main(int argc, const char * argv[])
 	TFIn fin(argv[1]);
 	PhoneLoad.Load(fin);
 
+	cout << "Successfully loaded data" << "\n";
+
 	THash<TStr, TFlt> towerLoc; //Map ID --> Lat + 33*Long (unique hash)
 	THash<TFlt, TInt> towerNumber; //Helper that maps towers to an in-order ID (0 to ~1100)
 	TSsParser Ss("LocationTowers.csv", ssfCommaSep);
@@ -37,8 +39,9 @@ int main(int argc, const char * argv[])
 		towerLoc.AddDat(Ss.GetFld(0), 100000*(-7*(Ss.GetFlt(1)-13) + 29*(Ss.GetFlt(2)-40)));
 	}
 
-	TPt <TNodeNet<TInt> > Net = TNodeNet<TInt>::New();
+	cout << "Build Hashmap" << "\n";
 
+	TPt <TNodeNet<TInt> > Net = TNodeNet<TInt>::New();
 
 	PUNGraph G = TUNGraph::New();
 	THash<TStr, TFlt>::TIter NI = towerLoc.BegI();
