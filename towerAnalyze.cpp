@@ -28,8 +28,6 @@ int main(int argc, const char * argv[])
 	TFIn fin(argv[1]);
 	PhoneLoad.Load(fin);
 
-	cout << "Successfully loaded data" << "\n";
-
 	THash<TStr, TFlt> towerLoc; //Map ID --> Lat + 33*Long (unique hash)
 	THash<TFlt, TInt> towerNumber; //Helper that maps towers to an in-order ID (0 to ~1100)
 	TSsParser Ss("LocationTowers.csv", ssfCommaSep);
@@ -60,6 +58,9 @@ int main(int argc, const char * argv[])
 		
 		NI.Next();
 	}
+
+	cout << "Successfully loaded data" << "\n";
+
 	int countt = 0;
 	for (TUNGraph::TNodeI NI = G->BegNI(); NI < G->EndNI(); NI++) 
 	{
