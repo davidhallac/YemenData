@@ -50,7 +50,7 @@ int main(int argc, const char * argv[])
 		{
 			cout << "Adding node: " << tow << "\n";
 			G->AddNode(tow);
-			cout << "Successfully Added Node" << "\n";
+			cout << "Successfully Added Node: " << "\n";
 			towerNumber.AddDat(tow, towerCount);
 			towerCount++;
 		}
