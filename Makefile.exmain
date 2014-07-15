@@ -11,8 +11,7 @@ analyze: analyze.cpp $(DEPH) $(DEPCPP) $(EXSNAP)/Snap.o
 		$(CC) $(CXXFLAGS) -o analyze analyze.cpp $(DEPCPP) $(EXSNAP)/Snap.o -I$(EXSNAP) -I$(EXSNAPADV) -I$(EXGLIB) -I$(EXSNAPEXP) $(LDFLAGS) $(LIBS)
 
 towerAnalyze: towerAnalyze.cpp $(DEPH) $(DEPCPP) $(EXSNAP)/Snap.o
-		$(CC) $(CXXFLAGS) -o towerAnalyze towerAnalyze.cpp $(DEPCPP) $(EXSNAP)/Snap.o -I$(EXSNAP) -I$(EXSNAPADV) -I$(EXGLIB) -I$(EXSNAPEXP) $(LDFLAGS) $(L\
-IBS)
+		$(CC) $(CXXFLAGS) -o towerAnalyze towerAnalyze.cpp $(DEPCPP) $(EXSNAP)/Snap.o -I$(EXSNAP) -I$(EXSNAPADV) -I$(EXGLIB) -I$(EXSNAPEXP) $(LDFLAGS) $(LIBS)
 
 $(EXSNAP)/Snap.o: 
 		make -C $(EXSNAP)
