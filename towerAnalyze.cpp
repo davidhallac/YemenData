@@ -59,7 +59,7 @@ int main(int argc, const char * argv[])
 	int numtowers = 0;
 	for (TUNGraph::TNodeI NI = G->BegNI(); NI < G->EndNI(); NI++) 
 	{
-		countt++;
+		numtowers++;
     	//printf("node id %d with degree %d\n",
     	//NI.GetId(), NI.GetDeg());
   	} 
