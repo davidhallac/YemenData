@@ -104,15 +104,21 @@ int main(int argc, const char * argv[])
 	}
 
 	int height = 96;
-	int width = numtowers;
 	for (int i = 0; i < height; ++i)
-    {
-        for (int j = 0; j < width; ++j)
-        {
-            std::cout << a[i][j] << ' ';
-        }
-        std::cout << std::endl;
-    }
+	{
+		int sum = 0;
+		for (int j = 0; j < numtowers; ++j)
+		{
+			sum = sum + a[i][j];
+		}
+
+		for (int j = 0; j < numtowers; j++)
+		{
+			a[i][j] = a[i][j]/sum * (100 * numtowers);
+			std::cout << a[i][j] << ' ';
+		}
+		std::cout << std::endl;
+	}
 
 
 
