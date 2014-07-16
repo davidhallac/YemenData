@@ -18,7 +18,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	if (argc < 3)
+	if (argc < 2)
 	{
 		cout << "Not enough arguments!" << "\n";
 		return 0;
@@ -43,6 +43,7 @@ int main(int argc, const char * argv[])
 	THash<TStr, TFlt>::TIter NI = towerLoc.BegI();
 	towerLoc.SortByDat(); //Sorts towers
 	TInt towerCount = 0;
+	G->AddNode(tow)
 	while(!NI.IsEnd())
 	{
 		TFlt tow = NI.GetDat();
