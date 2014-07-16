@@ -43,15 +43,12 @@ int main(int argc, const char * argv[])
 	THash<TStr, TFlt>::TIter NI = towerLoc.BegI();
 	towerLoc.SortByDat(); //Sorts towers
 	TInt towerCount = 0;
-	G->AddNode(tow)
 	while(!NI.IsEnd())
 	{
 		TFlt tow = NI.GetDat();
 		if(!G->IsNode(tow))
 		{
-			cout << "Adding node: " << tow << "\n";
 			G->AddNode(tow);
-			cout << "Successfully Added Node: " << "\n";
 			towerNumber.AddDat(tow, towerCount);
 			towerCount++;
 		}
